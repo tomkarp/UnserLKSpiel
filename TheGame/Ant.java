@@ -41,7 +41,7 @@ public class Ant extends Actor implements Feind
 
     public void attack(){
         if(isTouching(Spieler.class)){
-           // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+          // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
         }
     }
 
