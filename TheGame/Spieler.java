@@ -12,6 +12,7 @@ public class Spieler extends Actor
             setLocation(getX() - 2, getY());
         if(Greenfoot.isKeyDown("right"))
             setLocation(getX() + 2, getY());
-
+        
     }    
-}
+    }
+
