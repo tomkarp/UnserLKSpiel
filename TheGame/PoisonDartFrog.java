@@ -20,16 +20,34 @@ public class PoisonDartFrog extends Actor implements Feind
     {
         // Add your action code here.
     }    
+
     public void move(){
-        
+        move(2);
+        if(Greenfoot.getRandomNumber(50)==0){
+            turn(Greenfoot.getRandomNumber(180));
+        }
+        if(isAtEdge()){
+            turn(180);
+        }
     }
+
     public void damage(int schaden){
+        if(rüstung==0)
+            leben=leben-schaden;
+        else
+            rüstung=rüstung-schaden;
+        if(leben<=0){
+            getWorld().removeObject(this);
+            getWorld().addObject(new Poison(),getX(),getY());
+        }
     }
+
     public void attack(){
-        
+
     }
+
     public void regHealth(){
-        
+
     }
-    
+
 }
