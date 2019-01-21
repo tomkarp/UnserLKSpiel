@@ -15,6 +15,7 @@ public class Wombat extends Actor implements Feind, Treffbar
    int rüstung=300;
    int schaden=600;
    int leben=600;
+   static int wombatdeathcounter;
    ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
    public Wombat(){
        setImage("wombatWithArmor.png");
@@ -55,7 +56,7 @@ public class Wombat extends Actor implements Feind, Treffbar
             rüstung=rüstung-schaden;
         if(leben<=0){
             getWorld().removeObject(this);
-            
+            wombatdeathcounter++;
         }
     }
 
