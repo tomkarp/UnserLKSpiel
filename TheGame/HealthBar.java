@@ -15,19 +15,18 @@ public class HealthBar extends Actor
      */
     public void HealthBar(){
         setImage("armorBar.png");
-        getImage().scale(100,20);
     }
 
     public void setMax(int max){
         this.max=max;
     }
 
-    public void scale(int current){
+    public void scaleB(int current){
         int length=(current/max)*100;
         getImage().scale(length,20);
     }
 
     public void switchToHealth(){
-        setImage("healthBar.png");
+      setImage("healthBar.png");
     }
 }
