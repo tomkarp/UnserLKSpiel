@@ -9,21 +9,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class HealthBar extends Actor
 {
     int max;
-    /**
-     * Act - do whatever the HealthBar wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void HealthBar(){
-        setImage("armorBar.png");
+    public HealthBar(){
+         setImage("armorBar.png");
+         getImage().scale(25,7);
     }
-
+ 
     public void setMax(int max){
         this.max=max;
     }
 
-    public void scaleB(int current){
-        int length=(current/max)*100;
-        getImage().scale(length,20);
+    public void scaleB(int current,int rotation){
+        int length=((current/max)*100)/4;
+        getImage().scale(length,7);
+        setRotation(rotation);
     }
 
     public void switchToHealth(){

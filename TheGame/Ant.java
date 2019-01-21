@@ -10,7 +10,7 @@ import java.util.concurrent.*;
 public class Ant extends Actor implements Feind, Treffbar
 {
     int leben=100;
-    int rüstung=20;
+    int ruestung=20;
     boolean added;
     int schaden=200;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
@@ -18,20 +18,21 @@ public class Ant extends Actor implements Feind, Treffbar
     public Ant(){
         setImage("antWithArmor.png");
         getImage().scale(33,20);
-        b.setMax(rüstung);
+        b.setMax(ruestung);
        
     }
 
     public void act() 
     {
+        healthBar();
          if(!added){
              getWorld().addObject(b,getX(),getY());
              added=true;
         }
-        if(rüstung<=0){
+        if(ruestung<=0){
             setImage("ant.png");
             getImage().scale(33,20);
-            leben=leben+rüstung;
+            leben=leben+ruestung;
         }
         move();
         attack();
@@ -56,10 +57,10 @@ public class Ant extends Actor implements Feind, Treffbar
     }
 
     public void damage(int schaden){
-        if(rüstung<=0)
+        if(ruestung<=0)
             leben=leben-schaden;
         else
-            rüstung=rüstung-schaden;
+            ruestung=ruestung-schaden;
         if(leben<=0){
             getWorld().removeObject(this);
         }
@@ -70,14 +71,14 @@ public class Ant extends Actor implements Feind, Treffbar
     }
 
     public void healthBar(){
-        b.setLocation(getX(),getY()+10);
-        if(rüstung>0){
-            b.scaleB(rüstung);
+        b.setLocation(getX(),getY()+20);
+        if(ruestung>0){
+            b.scaleB(ruestung,getRotation());
 
         }
-        else if(rüstung==0){
+        else if(ruestung==0){
             b.switchToHealth();
-            b.scaleB(leben);
+            b.scaleB(leben,getRotation());
         }
     }
 }
