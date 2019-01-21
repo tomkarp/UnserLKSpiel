@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=Treffbar
 comment1.params=s
-comment1.target=void\ schaden(int)
+comment1.target=void\ damage(int)
 numComments=2
