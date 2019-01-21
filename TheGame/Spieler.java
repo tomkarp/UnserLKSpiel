@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Spieler extends Actor
+public class Spieler extends Actor implements Treffbar
 {
+    int leben;
     int i;
     int x;
     int y;
@@ -32,6 +33,10 @@ public class Spieler extends Actor
             attacke();
         }
     }  
+    
+    public void schaden(int s){
+        leben = leben - s;
+    }
 
     private void kreis(){
         if(Greenfoot.getMouseInfo() != null){
