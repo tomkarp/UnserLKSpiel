@@ -24,6 +24,7 @@ public class Ant extends Actor implements Feind, Treffbar
 
     public void act() 
     {
+        healthBar();
          if(!added){
              getWorld().addObject(b,getX(),getY());
              added=true;
@@ -70,14 +71,14 @@ public class Ant extends Actor implements Feind, Treffbar
     }
 
     public void healthBar(){
-        b.setLocation(getX(),getY()+10);
+        b.setLocation(getX(),getY()+20);
         if(ruestung>0){
-            b.scaleB(ruestung);
+            b.scaleB(ruestung,getRotation());
 
         }
         else if(ruestung==0){
             b.switchToHealth();
-            b.scaleB(leben);
+            b.scaleB(leben,getRotation());
         }
     }
 }

@@ -5,8 +5,8 @@ public class MyWorld extends World
 
     public MyWorld()
     {    
-        super(600, 400, 1); 
-        addObject(new Spieler(), 300, 200);
+        super(900, 600, 1); 
+        addObject(new Spieler(), getWidth()/2, getHeight()/2);
         int zufall;
     }
 
@@ -24,16 +24,16 @@ public class MyWorld extends World
 
     private void erzeugeObjekte() {
         int zufall;
-        zufall = Greenfoot.getRandomNumber(300);
+        zufall = Greenfoot.getRandomNumber(600);
         if(zufall == 0)
             addObject(new Snickers(), randX(), randY());
-        zufall = Greenfoot.getRandomNumber(300);
-        if(zufall == 0)
-            addObject(new Trank(), randX(), randY());
         zufall = Greenfoot.getRandomNumber(500);
         if(zufall == 0)
+            addObject(new Trank(), randX(), randY());
+        zufall = Greenfoot.getRandomNumber(600);
+        if(zufall == 0)
             addObject(new Ant(), randX(), randY());
-        zufall = Greenfoot.getRandomNumber(1000);
+        zufall = Greenfoot.getRandomNumber(1100);
         if(zufall == 0)
             addObject(new PoisonDartFrog(), randX(), randY());  
         zufall = Greenfoot.getRandomNumber(1500);

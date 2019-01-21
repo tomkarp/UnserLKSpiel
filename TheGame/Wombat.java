@@ -86,13 +86,19 @@ public class Wombat extends Actor implements Feind, Treffbar
     }
 
     public void healthBar(){
+<<<<<<< HEAD
         b.setLocation(getX(),getY()+10);
         if(ruestung>0){
             b.scaleB(ruestung);
+=======
+        b.setLocation(getX(),getY()+20);
+        if(ruestung>0){
+            b.scaleB(ruestung,getRotation());
+>>>>>>> ec402d8d2b34a7a23cb5fc8edea644412adf9d70
         }
        if(ruestung==0){
             b.switchToHealth();
-            b.scaleB(leben);
+            b.scaleB(leben,getRotation());
         }
     }
 

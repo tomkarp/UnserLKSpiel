@@ -22,10 +22,15 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         setImage("frogWithArmor.png");
         getImage().scale(40,38);
         b.setMax(ruestung);
+<<<<<<< HEAD
+=======
+
+>>>>>>> ec402d8d2b34a7a23cb5fc8edea644412adf9d70
     }
 
     public void act() 
     {
+        healthBar();
         if(!added){
             getWorld().addObject(b,getX(),getY());
             added=true;
@@ -73,13 +78,19 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     }
 
     public void healthBar(){
+<<<<<<< HEAD
         b.setLocation(getX(),getY()+10);
         if(ruestung>0){
             b.scaleB(ruestung);
+=======
+        b.setLocation(getX(),getY()+20);
+        if(ruestung>0){
+            b.scaleB(ruestung,getRotation());
+>>>>>>> ec402d8d2b34a7a23cb5fc8edea644412adf9d70
         }
         else if(ruestung==0){
             b.switchToHealth();
-            b.scaleB(leben);
+            b.scaleB(leben,getRotation());
         }
     }
 
