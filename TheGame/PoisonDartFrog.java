@@ -21,7 +21,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         setImage("frogWithArmor.png");
         getImage().scale(40,38);
         b.setMax(rüstung);
-      getWorld().addObject(b,0,0);
+        getWorld().addObject(b,0,0);
     }
 
     public void act() 
@@ -59,7 +59,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
 
     public void attack(){
         if(isTouching(Spieler.class)){
-                        Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
+            Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
             t.damage(schaden);
         }
     }
