@@ -1,4 +1,4 @@
-﻿import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 import java.util.concurrent.*;
 /**
  * Write a description of class Dragon here.
