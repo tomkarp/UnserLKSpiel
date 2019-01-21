@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Waffen
+comment1.params=w
+comment1.target=void\ attacke(int)
+comment2.params=winkel
+comment2.target=void\ zielen(int)
+comment3.params=x\ y\ winkel
+comment3.target=void\ tragen(int,\ int,\ int)
+numComments=4

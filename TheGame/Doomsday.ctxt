@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Doomsday
+comment1.params=
+comment1.target=Doomsday()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=w
+comment3.target=void\ attacke(int)
+comment4.params=w
+comment4.target=void\ zielen(int)
+comment5.params=x\ y\ winkel
+comment5.target=void\ tragen(int,\ int,\ int)
+numComments=6
