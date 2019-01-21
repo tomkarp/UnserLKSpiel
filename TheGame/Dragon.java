@@ -1,29 +1,31 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.concurrent.*;
 /**
- * Write a description of class PoisonDartFrog here.
+ * Write a description of class Dragon here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PoisonDartFrog extends Actor implements Feind
+public class Dragon extends Actor
 {
-    int leben=300;
-    int schaden=300;
-    int rüstung=100;
+
+    int leben=900;
+    int schaden=800;
+    int rüstung=800;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     /**
      * Act - do whatever the PoisonDartFrog wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public PoisonDartFrog(){
-        setImage("frogWithArmor.png");
+    public Dragon(){
+        setImage("dragonWithArmor.png");
         getImage().scale(40,38);
     }
+
     public void act() 
     {
         if(rüstung<=0){
-            setImage("frog.png");
+            setImage("dragon.png");
             leben=leben+rüstung;
         }
         move();
@@ -32,7 +34,7 @@ public class PoisonDartFrog extends Actor implements Feind
     }    
 
     public void move(){
-        move(2);
+        move(1);
         if(Greenfoot.getRandomNumber(50)==0){
             turn(Greenfoot.getRandomNumber(180));
         }
@@ -53,13 +55,12 @@ public class PoisonDartFrog extends Actor implements Feind
     }
 
     public void attack(){
-         if(isTouching(Spieler.class)){
-          // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+        if(isTouching(Spieler.class)){
+            // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
         }
     }
 
     public void regHealth(){
-          t.scheduleAtFixedRate(()->leben++,500,500,TimeUnit.MILLISECONDS);
+        t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
     }
-
 }
