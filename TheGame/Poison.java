@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 
-public class Poison extends Actor
+public class Poison extends Actor implements Feind
 {
     int schritte;
     int schaden=400;
@@ -23,7 +23,7 @@ public class Poison extends Actor
     public void act() 
     {
         vanish();
-        damage();
+       attack();
     }    
 
     public void vanish(){
@@ -32,9 +32,18 @@ public class Poison extends Actor
             getWorld().removeObject(this);
         }
     }
-    public void damage(){
+    public void attack(){
         if(isTouching(Spieler.class)){
             //treffeBaby(schaden)
         }
+    }
+    public void move(){
+        
+        
+    }
+    public void regHealth(){
+        
+    }
+    public void damage( int d){
     }
 }

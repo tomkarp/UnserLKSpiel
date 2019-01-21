@@ -1,29 +1,31 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.concurrent.*;
 /**
- * Write a description of class Wombat here.
+ * Write a description of class Dragon here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Wombat extends Actor implements Feind
+public class Dragon extends Actor
 {
+
+    int leben=900;
+    int schaden=800;
+    int rüstung=800;
+    ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     /**
-     * Act - do whatever the Wombat wants to do. This method is called whenever
+     * Act - do whatever the PoisonDartFrog wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-   int rüstung=300;
-   int schaden=600;
-   int leben=600;
-   ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
-   public Wombat(){
-       setImage("wombatWithArmor.png");
-       
+    public Dragon(){
+        setImage("dragonWithArmor.png");
+        getImage().scale(40,38);
     }
+
     public void act() 
     {
         if(rüstung<=0){
-            setImage("wombat.png");
+            setImage("dragon.png");
             leben=leben+rüstung;
         }
         move();
@@ -32,19 +34,12 @@ public class Wombat extends Actor implements Feind
     }    
 
     public void move(){
-        move(2);
+        move(1);
         if(Greenfoot.getRandomNumber(50)==0){
             turn(Greenfoot.getRandomNumber(180));
         }
         if(isAtEdge()){
             turn(180);
-        }
-        if(Greenfoot.getRandomNumber(300)==0){
-           int nX=getX()+Greenfoot.getRandomNumber(100);
-           int nY=getY()+Greenfoot.getRandomNumber(100);
-           if(nX<=getWorld().getWidth()&&nX>=0&&nY<=getWorld().getHeight()&&nY>=0){
-               setLocation(nX,nY);
-            }
         }
     }
 
@@ -55,7 +50,7 @@ public class Wombat extends Actor implements Feind
             rüstung=rüstung-schaden;
         if(leben<=0){
             getWorld().removeObject(this);
-            
+            getWorld().addObject(new Poison(),getX(),getY());
         }
     }
 
@@ -64,8 +59,8 @@ public class Wombat extends Actor implements Feind
             // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
         }
     }
-        public void regHealth(){
-            t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
-        }
-    
+
+    public void regHealth(){
+        t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
+    }
 }
