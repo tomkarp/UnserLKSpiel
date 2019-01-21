@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+﻿import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.concurrent.*;
 /**
  * Write a description of class Wombat here.
@@ -16,18 +16,26 @@ public class Wombat extends Actor implements Feind, Treffbar
     int rüstung=300;
     int schaden=600;
     int leben=600;
-	static int wombatdeathcounter;
-    HealthBar b ;
+    boolean added;
+    HealthBar b = new HealthBar();
+    static int wombatdeathcounter;
+
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     public Wombat(){
-        b=new HealthBar();
         setImage("wombatWithArmor.png");
         b.setMax(rüstung);
-        getWorld().addObject(b,0,0);
+       
     }
-
+  
+      
+  
     public void act() 
     {
+        healthBar();
+        if(!added){
+             getWorld().addObject(b,0,0);
+             added=true;
+        }
         if(rüstung<=0){
             setImage("wombat.png");
             leben=leben+rüstung;
@@ -80,11 +88,11 @@ public class Wombat extends Actor implements Feind, Treffbar
     public void healthBar(){
         b.setLocation(getX(),getY()+10);
         if(rüstung>0){
-            b.scale(rüstung);
+            b.scaleB(rüstung);
         }
-        else if(rüstung==0){
+       if(rüstung==0){
             b.switchToHealth();
-            b.scale(leben);
+            b.scaleB(leben);
         }
     }
 

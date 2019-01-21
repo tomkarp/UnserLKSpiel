@@ -71,11 +71,11 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     public void healthBar(){
         b.setLocation(getX(),getY()+10);
         if(rüstung>0){
-            b.scale(rüstung);
+            b.scaleB(rüstung);
         }
         else if(rüstung==0){
             b.switchToHealth();
-            b.scale(leben);
+            b.scaleB(leben);
         }
     }
 

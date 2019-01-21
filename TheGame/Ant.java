@@ -1,4 +1,4 @@
-import greenfoot.*; 
+﻿import greenfoot.*; 
 
 /**
  * Weakest enemy
@@ -68,10 +68,11 @@ public class Ant extends Actor implements Feind, Treffbar
         b.setLocation(getX(),getY()+10);
         if(rüstung>0){
             b.scale(rüstung);
+
         }
         else if(rüstung==0){
             b.switchToHealth();
-            b.scale(leben);
+            b.scaleB(leben);
         }
     }
 }

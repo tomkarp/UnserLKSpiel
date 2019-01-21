@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+﻿import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.concurrent.*;
 /**
  * Write a description of class Dragon here.
@@ -73,6 +73,7 @@ public class Dragon extends Actor implements Feind, Treffbar
         t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
     }
 
+
     public void healthBar(){
         b.setLocation(getX(),getY()+10);
         if(rüstung>0){
@@ -80,7 +81,7 @@ public class Dragon extends Actor implements Feind, Treffbar
         }
         else if(rüstung==0){
             b.switchToHealth();
-            b.scale(leben);
+            b.scaleB(leben);
         }
     }
 }
