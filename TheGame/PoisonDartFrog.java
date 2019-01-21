@@ -16,6 +16,10 @@ public class PoisonDartFrog extends Actor implements Feind
      * Act - do whatever the PoisonDartFrog wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public PoisonDartFrog(){
+        setImage("frogWithArmor.png");
+        getImage().scale(40,38);
+    }
     public void act() 
     {
         if(rüstung<=0){
