@@ -1,7 +1,9 @@
 #BlueJ class context
 comment0.target=Snickers
 comment1.params=
-comment1.target=void\ act()
+comment1.target=Snickers()
 comment2.params=
-comment2.target=void\ treffen()
-numComments=3
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ treffen()
+numComments=4
