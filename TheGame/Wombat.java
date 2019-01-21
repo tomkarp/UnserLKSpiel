@@ -12,14 +12,16 @@ public class Wombat extends Actor implements Feind
      * Act - do whatever the Wombat wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-   int rüstung=300;
-   int schaden=600;
-   int leben=600;
-   ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
-   public Wombat(){
-       setImage("wombatWithArmor.png");
-       
+    int rüstung=300;
+    int schaden=600;
+    int leben=600;
+     HealthBar b =new HealthBar(600);
+    ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
+    public Wombat(){
+        setImage("wombatWithArmor.png");
+
     }
+
     public void act() 
     {
         if(rüstung<=0){
@@ -40,10 +42,10 @@ public class Wombat extends Actor implements Feind
             turn(180);
         }
         if(Greenfoot.getRandomNumber(300)==0){
-           int nX=getX()+Greenfoot.getRandomNumber(100);
-           int nY=getY()+Greenfoot.getRandomNumber(100);
-           if(nX<=getWorld().getWidth()&&nX>=0&&nY<=getWorld().getHeight()&&nY>=0){
-               setLocation(nX,nY);
+            int nX=getX()+Greenfoot.getRandomNumber(100);
+            int nY=getY()+Greenfoot.getRandomNumber(100);
+            if(nX<=getWorld().getWidth()&&nX>=0&&nY<=getWorld().getHeight()&&nY>=0){
+                setLocation(nX,nY);
             }
         }
     }
@@ -55,7 +57,7 @@ public class Wombat extends Actor implements Feind
             rüstung=rüstung-schaden;
         if(leben<=0){
             getWorld().removeObject(this);
-            
+
         }
     }
 
@@ -64,8 +66,14 @@ public class Wombat extends Actor implements Feind
             // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
         }
     }
-        public void regHealth(){
-            t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
+
+    public void regHealth(){
+        t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
+    }
+   public void healthBar(){
+       if(rüstung>=0){
+           
         }
-    
+    }
+
 }

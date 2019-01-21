@@ -5,4 +5,6 @@ public interface Feind
     public void attack();
     public void move();
     public void regHealth();
+    public void healthBar();
+   
 }

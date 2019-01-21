@@ -11,6 +11,7 @@ public class PoisonDartFrog extends Actor implements Feind
     int leben=300;
     int schaden=300;
     int rüstung=100;
+    HealthBar b =new HealthBar(100);
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     /**
      * Act - do whatever the PoisonDartFrog wants to do. This method is called whenever
