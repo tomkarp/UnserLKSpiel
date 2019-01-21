@@ -22,7 +22,7 @@ public class Dragon extends Actor implements Feind, Treffbar
     public Dragon(){
         setImage("dragonWithArmor.png");
         getImage().scale(100,100);
-         b.setMax(rüstung);
+        b.setMax(rüstung);
         getWorld().addObject(b,0,0);
     }
 
@@ -61,7 +61,8 @@ public class Dragon extends Actor implements Feind, Treffbar
 
     public void attack(){
         if(isTouching(Spieler.class)){
-            getOneIntersectingObject(Spieler.class).damage(schaden);
+            Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
+            t.damage(schaden);
         }
         if(Greenfoot.getRandomNumber(200)==0){
             getWorld().addObject(new Laser(schussSchaden,getRotation()+90),getX()+10,getY()+10);
@@ -71,10 +72,11 @@ public class Dragon extends Actor implements Feind, Treffbar
     public void regHealth(){
         t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
     }
-     public void healthBar(){
-          b.setLocation(getX(),getY()+10);
-       if(rüstung>0){
-           b.scale(rüstung);
+
+    public void healthBar(){
+        b.setLocation(getX(),getY()+10);
+        if(rüstung>0){
+            b.scale(rüstung);
         }
         else if(rüstung==0){
             b.switchToHealth();

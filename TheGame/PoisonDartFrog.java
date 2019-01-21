@@ -59,7 +59,8 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
 
     public void attack(){
         if(isTouching(Spieler.class)){
-            getOneIntersectingObject(Spieler.class).damage(schaden);
+                        Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
+            t.damage(schaden);
         }
     }
 
