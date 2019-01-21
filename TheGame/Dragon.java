@@ -1,3 +1,4 @@
+
 import greenfoot.*;
 import java.util.concurrent.*;
 /**
@@ -11,7 +12,8 @@ public class Dragon extends Actor implements Feind, Treffbar
 
     int leben=900;
     int schaden=800;
-    int rÃ¼stung=800;
+    boolean added;
+    int rüstung=800;
     int schussSchaden=400;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     HealthBar b =new HealthBar();
@@ -22,16 +24,20 @@ public class Dragon extends Actor implements Feind, Treffbar
     public Dragon(){
         setImage("dragonWithArmor.png");
         getImage().scale(100,100);
-        b.setMax(rÃ¼stung);
-        getWorld().addObject(b,0,0);
+        b.setMax(rüstung);
+     
     }
 
     public void act() 
     {
-        if(rÃ¼stung<=0){
+         if(!added){
+             getWorld().addObject(b,getX(),getY());
+             added=true;
+        }
+        if(rüstung<=0){
             setImage("dragon.png");
             getImage().scale(100,100);
-            leben=leben+rÃ¼stung;
+            leben=leben+rüstung;
         }
         move();
         attack();
@@ -49,10 +55,10 @@ public class Dragon extends Actor implements Feind, Treffbar
     }
 
     public void damage(int schaden){
-        if(rÃ¼stung<=0)
+        if(rüstung<=0)
             leben=leben-schaden;
         else
-            rÃ¼stung=rÃ¼stung-schaden;
+            rüstung=rüstung-schaden;
         if(leben<=0){
             getWorld().removeObject(this);
             getWorld().addObject(new Poison(),getX(),getY());
@@ -76,10 +82,10 @@ public class Dragon extends Actor implements Feind, Treffbar
 
     public void healthBar(){
         b.setLocation(getX(),getY()+10);
-        if(rÃ¼stung>0){
-            b.scale(rÃ¼stung);
+        if(rüstung>0){
+            b.scaleB(rüstung);
         }
-        else if(rÃ¼stung==0){
+        else if(rüstung==0){
             b.switchToHealth();
             b.scaleB(leben);
         }

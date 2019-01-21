@@ -2,6 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Snickers extends Actor
 {
+    
+    public Snickers(){
+        setImage("snickers.png");
+    }
     public void act()
     {
         treffen();
