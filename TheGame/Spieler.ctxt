@@ -1,6 +1,12 @@
 #BlueJ class context
 comment0.target=Spieler
 comment1.params=
+<<<<<<< HEAD
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ anzeigen()
+numComments=3
+=======
 comment1.target=Spieler()
 comment2.params=
 comment2.target=void\ act()
@@ -15,3 +21,4 @@ comment6.target=void\ waffenWechsel()
 comment7.params=
 comment7.target=void\ bewegen()
 numComments=8
+>>>>>>> b7f8c5d8a52c0c9b0b5eab9efbbaf197fe790d64
