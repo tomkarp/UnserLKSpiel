@@ -10,7 +10,7 @@ public class Snickers extends Actor
     {   if(isTouching(Spieler.class)) {
             Spieler s = (Spieler) getOneIntersectingObject(Spieler.class);
             getWorld().removeObject(this);
-            s.punkte++;
+            s.leben+=50;
         }
     }
 }
