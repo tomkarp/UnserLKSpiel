@@ -6,7 +6,7 @@ import java.util.concurrent.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PoisonDartFrog extends Actor implements Feind
+public class PoisonDartFrog extends Actor implements Feind, Treffbar
 {
     int leben=300;
     int schaden=300;
@@ -47,7 +47,7 @@ public class PoisonDartFrog extends Actor implements Feind
     }
 
     public void damage(int schaden){
-        if(rüstung==0)
+        if(rüstung<=0)
             leben=leben-schaden;
         else
             rüstung=rüstung-schaden;
@@ -59,7 +59,8 @@ public class PoisonDartFrog extends Actor implements Feind
 
     public void attack(){
         if(isTouching(Spieler.class)){
-            // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+                        Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
+            t.damage(schaden);
         }
     }
 

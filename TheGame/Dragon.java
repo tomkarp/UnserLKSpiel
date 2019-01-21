@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+﻿import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.concurrent.*;
 /**
  * Write a description of class Dragon here.
@@ -6,7 +6,7 @@ import java.util.concurrent.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Dragon extends Actor
+public class Dragon extends Actor implements Feind, Treffbar
 {
 
     int leben=900;
@@ -22,7 +22,7 @@ public class Dragon extends Actor
     public Dragon(){
         setImage("dragonWithArmor.png");
         getImage().scale(100,100);
-         b.setMax(rüstung);
+        b.setMax(rüstung);
         getWorld().addObject(b,0,0);
     }
 
@@ -49,7 +49,7 @@ public class Dragon extends Actor
     }
 
     public void damage(int schaden){
-        if(rüstung==0)
+        if(rüstung<=0)
             leben=leben-schaden;
         else
             rüstung=rüstung-schaden;
@@ -61,7 +61,8 @@ public class Dragon extends Actor
 
     public void attack(){
         if(isTouching(Spieler.class)){
-            // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+            Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
+            t.damage(schaden);
         }
         if(Greenfoot.getRandomNumber(200)==0){
             getWorld().addObject(new Laser(schussSchaden,getRotation()+90),getX()+10,getY()+10);
@@ -71,10 +72,12 @@ public class Dragon extends Actor
     public void regHealth(){
         t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
     }
-     public void healthBar(){
-          b.setLocation(getX(),getY()+10);
-       if(rüstung>0){
-           b.scaleB(rüstung);
+
+
+    public void healthBar(){
+        b.setLocation(getX(),getY()+10);
+        if(rüstung>0){
+            b.scale(rüstung);
         }
         else if(rüstung==0){
             b.switchToHealth();

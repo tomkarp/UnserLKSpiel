@@ -1,4 +1,4 @@
-import greenfoot.*; 
+﻿import greenfoot.*; 
 
 /**
  * Weakest enemy
@@ -7,7 +7,7 @@ import greenfoot.*;
  * @version 0.2
  */
 import java.util.concurrent.*;
-public class Ant extends Actor implements Feind
+public class Ant extends Actor implements Feind, Treffbar
 {
     int leben=100;
     int rüstung=20;
@@ -17,8 +17,8 @@ public class Ant extends Actor implements Feind
     public Ant(){
         setImage("antWithArmor.png");
         getImage().scale(33,20);
-         b.setMax(rüstung);
-         getWorld().addObject(b,0,0);
+        b.setMax(rüstung);
+        getWorld().addObject(b,0,0);
     }
 
     public void act() 
@@ -34,9 +34,9 @@ public class Ant extends Actor implements Feind
     }    
 
     public void move(){
-       move(3);
-       if(Greenfoot.getRandomNumber(30)==0){
-           turn(Greenfoot.getRandomNumber(360));
+        move(3);
+        if(Greenfoot.getRandomNumber(30)==0){
+            turn(Greenfoot.getRandomNumber(360));
         }
         if(isAtEdge()){
             turn(180);
@@ -45,12 +45,13 @@ public class Ant extends Actor implements Feind
 
     public void attack(){
         if(isTouching(Spieler.class)){
-          // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+            Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
+            t.damage(schaden);
         }
     }
 
     public void damage(int schaden){
-        if(rüstung==0)
+        if(rüstung<=0)
             leben=leben-schaden;
         else
             rüstung=rüstung-schaden;
@@ -62,10 +63,12 @@ public class Ant extends Actor implements Feind
     public void regHealth(){
         t.scheduleAtFixedRate(()->leben++,1,1,TimeUnit.SECONDS);
     }
-     public void healthBar(){
-          b.setLocation(getX(),getY()+10);
-       if(rüstung>0){
-           b.scaleB(rüstung);
+
+    public void healthBar(){
+        b.setLocation(getX(),getY()+10);
+        if(rüstung>0){
+            b.scale(rüstung);
+
         }
         else if(rüstung==0){
             b.switchToHealth();

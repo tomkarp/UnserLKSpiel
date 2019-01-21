@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+﻿import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.concurrent.*;
 /**
  * Write a description of class Wombat here.
@@ -6,17 +6,20 @@ import java.util.concurrent.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Wombat extends Actor implements Feind
+public class Wombat extends Actor implements Feind, Treffbar
 {
     /**
      * Act - do whatever the Wombat wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+
     int rüstung=300;
     int schaden=600;
     int leben=600;
     boolean added;
     HealthBar b = new HealthBar();
+    static int wombatdeathcounter;
+
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     public Wombat(){
         setImage("wombatWithArmor.png");
@@ -60,19 +63,21 @@ public class Wombat extends Actor implements Feind
     }
 
     public void damage(int schaden){
-        if(rüstung==0)
+        if(rüstung<=0)
             leben=leben-schaden;
         else
             rüstung=rüstung-schaden;
         if(leben<=0){
             getWorld().removeObject(this);
+            wombatdeathcounter++;
 
         }
     }
 
     public void attack(){
         if(isTouching(Spieler.class)){
-            // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+            Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
+            t.damage(schaden);
         }
     }
 
