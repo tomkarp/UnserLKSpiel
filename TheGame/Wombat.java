@@ -1,4 +1,4 @@
-ï»¿import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.concurrent.*;
 /**
  * Write a description of class Wombat here.
@@ -13,7 +13,7 @@ public class Wombat extends Actor implements Feind, Treffbar
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    int rÃ¼stung=300;
+    int rüstung=300;
     int schaden=600;
     int leben=600;
     boolean added;
@@ -23,7 +23,7 @@ public class Wombat extends Actor implements Feind, Treffbar
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     public Wombat(){
         setImage("wombatWithArmor.png");
-        b.setMax(rÃ¼stung);
+        b.setMax(rüstung);
        
     }
   
@@ -33,12 +33,12 @@ public class Wombat extends Actor implements Feind, Treffbar
     {
         healthBar();
         if(!added){
-             getWorld().addObject(b,0,0);
+             getWorld().addObject(b,getX(),getY());
              added=true;
         }
-        if(rÃ¼stung<=0){
+        if(rüstung<=0){
             setImage("wombat.png");
-            leben=leben+rÃ¼stung;
+            leben=leben+rüstung;
         }
         move();
         attack();
@@ -63,10 +63,10 @@ public class Wombat extends Actor implements Feind, Treffbar
     }
 
     public void damage(int schaden){
-        if(rÃ¼stung<=0)
+        if(rüstung<=0)
             leben=leben-schaden;
         else
-            rÃ¼stung=rÃ¼stung-schaden;
+            rüstung=rüstung-schaden;
         if(leben<=0){
             getWorld().removeObject(this);
             wombatdeathcounter++;
@@ -87,10 +87,10 @@ public class Wombat extends Actor implements Feind, Treffbar
 
     public void healthBar(){
         b.setLocation(getX(),getY()+10);
-        if(rÃ¼stung>0){
-            b.scaleB(rÃ¼stung);
+        if(rüstung>0){
+            b.scaleB(rüstung);
         }
-       if(rÃ¼stung==0){
+       if(rüstung==0){
             b.switchToHealth();
             b.scaleB(leben);
         }

@@ -39,8 +39,9 @@ public class MyWorld extends World
         zufall = Greenfoot.getRandomNumber(1500);
         if(zufall == 0)
             addObject(new Wombat(), randX(), randY());
-        if(Wombat.wombatdeathcounter%10 == 0){
+        if(Wombat.wombatdeathcounter%10 == 0&&Wombat.wombatdeathcounter!=0){
             addObject(new Dragon(), randX(), randY()); 
+            Wombat.wombatdeathcounter++;
         }
     }
 }

@@ -10,7 +10,8 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
 {
     int leben=300;
     int schaden=300;
-    int rÃ¼stung=100;
+    boolean added;
+    int rüstung=100;
     HealthBar b =new HealthBar();
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     /**
@@ -20,16 +21,20 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     public PoisonDartFrog(){
         setImage("frogWithArmor.png");
         getImage().scale(40,38);
-        b.setMax(rÃ¼stung);
-      getWorld().addObject(b,0,0);
+        b.setMax(rüstung);
+
     }
 
     public void act() 
     {
-        if(rÃ¼stung<=0){
+        if(!added){
+            getWorld().addObject(b,getX(),getY());
+            added=true;
+        }
+        if(rüstung<=0){
             setImage("frog.png");
             getImage().scale(40,38);
-            leben=leben+rÃ¼stung;
+            leben=leben+rüstung;
         }
         move();
         attack();
@@ -47,10 +52,10 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     }
 
     public void damage(int schaden){
-        if(rÃ¼stung<=0)
+        if(rüstung<=0)
             leben=leben-schaden;
         else
-            rÃ¼stung=rÃ¼stung-schaden;
+            rüstung=rüstung-schaden;
         if(leben<=0){
             getWorld().removeObject(this);
             getWorld().addObject(new Poison(),getX(),getY());
@@ -59,7 +64,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
 
     public void attack(){
         if(isTouching(Spieler.class)){
-                        Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
+            Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
             t.damage(schaden);
         }
     }
@@ -70,10 +75,10 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
 
     public void healthBar(){
         b.setLocation(getX(),getY()+10);
-        if(rÃ¼stung>0){
-            b.scaleB(rÃ¼stung);
+        if(rüstung>0){
+            b.scaleB(rüstung);
         }
-        else if(rÃ¼stung==0){
+        else if(rüstung==0){
             b.switchToHealth();
             b.scaleB(leben);
         }
