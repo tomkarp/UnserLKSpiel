@@ -18,7 +18,7 @@ public class Wombat extends Actor implements Feind, Treffbar
     int leben=600;
     boolean added;
     HealthBar b = new HealthBar();
-    static int wombatdeathcounter;
+    static int wombatdeathcounter = 1;
 
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     public Wombat(){
@@ -86,9 +86,15 @@ public class Wombat extends Actor implements Feind, Treffbar
     }
 
     public void healthBar(){
+<<<<<<< HEAD
+        b.setLocation(getX(),getY()+10);
+        if(ruestung>0){
+            b.scaleB(ruestung);
+=======
         b.setLocation(getX(),getY()+20);
         if(ruestung>0){
             b.scaleB(ruestung,getRotation());
+>>>>>>> ec402d8d2b34a7a23cb5fc8edea644412adf9d70
         }
        if(ruestung==0){
             b.switchToHealth();
