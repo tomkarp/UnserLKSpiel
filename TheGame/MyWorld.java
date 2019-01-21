@@ -8,11 +8,26 @@ public class MyWorld extends World
         super(600, 400, 1); 
         addObject(new Spieler(), 300, 200);
         int zufall;
-        zufall = Greenfoot.getRandomNumber(400);
+    }
+    
+    public void act() {
+        erzeugeObjekte();
+    }
+     private int randX() {
+        return Greenfoot.getRandomNumber(getWidth());
+    }
+
+    private int randY() {
+        return Greenfoot.getRandomNumber(getHeight());
+    }
+    
+    private void erzeugeObjekte() {
+        int zufall;
+        zufall = Greenfoot.getRandomNumber(300);
         if(zufall == 0)
-            addObject(new Vogel(), randX(), randY());
-        zufall = Greenfoot.getRandomNumber(400);
+            addObject(new Snickers(), randX(), randY());
+        zufall = Greenfoot.getRandomNumber(300);
         if(zufall == 0)
-            addObject(new Wildschwein(), randX(), randY());
+            addObject(new Trank(), randX(), randY());
     }
 }
