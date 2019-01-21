@@ -11,7 +11,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     int leben=300;
     int schaden=300;
     boolean added;
-    int rüstung=100;
+    int ruestung=100;
     HealthBar b =new HealthBar();
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     /**
@@ -21,7 +21,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     public PoisonDartFrog(){
         setImage("frogWithArmor.png");
         getImage().scale(40,38);
-        b.setMax(rüstung);
+        b.setMax(ruestung);
     }
 
     public void act() 
@@ -30,10 +30,10 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
             getWorld().addObject(b,getX(),getY());
             added=true;
         }
-        if(rüstung<=0){
+        if(ruestung<=0){
             setImage("frog.png");
             getImage().scale(40,38);
-            leben=leben+rüstung;
+            leben=leben+ruestung;
         }
         move();
         attack();
@@ -51,10 +51,10 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     }
 
     public void damage(int schaden){
-        if(rüstung<=0)
+        if(ruestung<=0)
             leben=leben-schaden;
         else
-            rüstung=rüstung-schaden;
+            ruestung=ruestung-schaden;
         if(leben<=0){
             getWorld().removeObject(this);
             getWorld().addObject(new Poison(),getX(),getY());
@@ -74,10 +74,10 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
 
     public void healthBar(){
         b.setLocation(getX(),getY()+10);
-        if(rüstung>0){
-            b.scaleB(rüstung);
+        if(ruestung>0){
+            b.scaleB(ruestung);
         }
-        else if(rüstung==0){
+        else if(ruestung==0){
             b.switchToHealth();
             b.scaleB(leben);
         }
