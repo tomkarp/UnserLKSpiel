@@ -14,6 +14,7 @@ public class Dragon extends Actor
     int rüstung=800;
     int schussSchaden=400;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
+    HealthBar b =new HealthBar();
     /**
      * Act - do whatever the PoisonDartFrog wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -21,6 +22,8 @@ public class Dragon extends Actor
     public Dragon(){
         setImage("dragonWithArmor.png");
         getImage().scale(100,100);
+         b.setMax(rüstung);
+        getWorld().addObject(b,0,0);
     }
 
     public void act() 
@@ -67,5 +70,15 @@ public class Dragon extends Actor
 
     public void regHealth(){
         t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
+    }
+     public void healthBar(){
+          b.setLocation(getX(),getY()+10);
+       if(rüstung>0){
+           b.scale(rüstung);
+        }
+        else if(rüstung==0){
+            b.switchToHealth();
+            b.scale(leben);
+        }
     }
 }

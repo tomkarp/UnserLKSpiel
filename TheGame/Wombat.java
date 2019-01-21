@@ -15,11 +15,13 @@ public class Wombat extends Actor implements Feind
     int rüstung=300;
     int schaden=600;
     int leben=600;
-     HealthBar b =new HealthBar(600);
+    HealthBar b ;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     public Wombat(){
+        b=new HealthBar();
         setImage("wombatWithArmor.png");
-
+        b.setMax(rüstung);
+        getWorld().addObject(b,0,0);
     }
 
     public void act() 
@@ -70,9 +72,15 @@ public class Wombat extends Actor implements Feind
     public void regHealth(){
         t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
     }
-   public void healthBar(){
-       if(rüstung>=0){
-           
+
+    public void healthBar(){
+        b.setLocation(getX(),getY()+10);
+        if(rüstung>0){
+            b.scale(rüstung);
+        }
+        else if(rüstung==0){
+            b.switchToHealth();
+            b.scale(leben);
         }
     }
 
