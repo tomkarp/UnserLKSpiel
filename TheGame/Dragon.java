@@ -12,6 +12,7 @@ public class Dragon extends Actor
     int leben=900;
     int schaden=800;
     int rüstung=800;
+    int schussSchaden=400;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     /**
      * Act - do whatever the PoisonDartFrog wants to do. This method is called whenever
@@ -19,13 +20,14 @@ public class Dragon extends Actor
      */
     public Dragon(){
         setImage("dragonWithArmor.png");
-        getImage().scale(40,38);
+        getImage().scale(100,100);
     }
 
     public void act() 
     {
         if(rüstung<=0){
             setImage("dragon.png");
+            getImage().scale(100,100);
             leben=leben+rüstung;
         }
         move();
@@ -35,7 +37,7 @@ public class Dragon extends Actor
 
     public void move(){
         move(1);
-        if(Greenfoot.getRandomNumber(50)==0){
+        if(Greenfoot.getRandomNumber(90)==0){
             turn(Greenfoot.getRandomNumber(180));
         }
         if(isAtEdge()){
@@ -57,6 +59,9 @@ public class Dragon extends Actor
     public void attack(){
         if(isTouching(Spieler.class)){
             // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+        }
+        if(Greenfoot.getRandomNumber(200)==0){
+            getWorld().addObject(new Laser(schussSchaden,getRotation()+90),getX()+10,getY()+10);
         }
     }
 
