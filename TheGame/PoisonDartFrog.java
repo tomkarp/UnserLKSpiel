@@ -20,10 +20,12 @@ public class PoisonDartFrog extends Actor implements Feind
         setImage("frogWithArmor.png");
         getImage().scale(40,38);
     }
+
     public void act() 
     {
         if(rüstung<=0){
             setImage("frog.png");
+            getImage().scale(40,38);
             leben=leben+rüstung;
         }
         move();
@@ -53,13 +55,13 @@ public class PoisonDartFrog extends Actor implements Feind
     }
 
     public void attack(){
-         if(isTouching(Spieler.class)){
-          // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+        if(isTouching(Spieler.class)){
+            // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
         }
     }
 
     public void regHealth(){
-          t.scheduleAtFixedRate(()->leben++,500,500,TimeUnit.MILLISECONDS);
+        t.scheduleAtFixedRate(()->leben++,500,500,TimeUnit.MILLISECONDS);
     }
 
 }

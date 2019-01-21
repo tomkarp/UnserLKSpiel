@@ -22,6 +22,7 @@ public class Ant extends Actor implements Feind
     {
         if(rüstung<=0){
             setImage("ant.png");
+            getImage().scale(33,20);
             leben=leben+rüstung;
         }
         move();

@@ -2,7 +2,7 @@ import greenfoot.*;
 public class Laser extends Actor implements Projektil  
 {
     int zeit;
-    public Laser(int w)
+    public Laser(int schaden,int w)
     {
         zeit = 50;
         setRotation(w - 90);
