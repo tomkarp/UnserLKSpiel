@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 
-public class Poison extends Actor implements Feind
+public class Poison extends Actor 
 {
     int schritte;
     int schaden=400;
@@ -37,13 +37,5 @@ public class Poison extends Actor implements Feind
             //treffeBaby(schaden)
         }
     }
-    public void move(){
-        
-        
-    }
-    public void regHealth(){
-        
-    }
-    public void damage( int d){
-    }
+ 
 }

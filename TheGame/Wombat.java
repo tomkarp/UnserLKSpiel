@@ -12,15 +12,20 @@ public class Wombat extends Actor implements Feind, Treffbar
      * Act - do whatever the Wombat wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-   int rüstung=300;
-   int schaden=600;
-   int leben=600;
-   static int wombatdeathcounter;
-   ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
-   public Wombat(){
-       setImage("wombatWithArmor.png");
-       
+
+    int rüstung=300;
+    int schaden=600;
+    int leben=600;
+	static int wombatdeathcounter;
+    HealthBar b ;
+    ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
+    public Wombat(){
+        b=new HealthBar();
+        setImage("wombatWithArmor.png");
+        b.setMax(rüstung);
+        getWorld().addObject(b,0,0);
     }
+
     public void act() 
     {
         if(rüstung<=0){
@@ -41,10 +46,10 @@ public class Wombat extends Actor implements Feind, Treffbar
             turn(180);
         }
         if(Greenfoot.getRandomNumber(300)==0){
-           int nX=getX()+Greenfoot.getRandomNumber(100);
-           int nY=getY()+Greenfoot.getRandomNumber(100);
-           if(nX<=getWorld().getWidth()&&nX>=0&&nY<=getWorld().getHeight()&&nY>=0){
-               setLocation(nX,nY);
+            int nX=getX()+Greenfoot.getRandomNumber(100);
+            int nY=getY()+Greenfoot.getRandomNumber(100);
+            if(nX<=getWorld().getWidth()&&nX>=0&&nY<=getWorld().getHeight()&&nY>=0){
+                setLocation(nX,nY);
             }
         }
     }
@@ -57,6 +62,7 @@ public class Wombat extends Actor implements Feind, Treffbar
         if(leben<=0){
             getWorld().removeObject(this);
             wombatdeathcounter++;
+
         }
     }
 
@@ -65,8 +71,20 @@ public class Wombat extends Actor implements Feind, Treffbar
             getOneIntersectingObject(Spieler.class).damage(schaden);
         }
     }
-        public void regHealth(){
-            t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
+
+    public void regHealth(){
+        t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
+    }
+
+    public void healthBar(){
+        b.setLocation(getX(),getY()+10);
+        if(rüstung>0){
+            b.scale(rüstung);
         }
-    
+        else if(rüstung==0){
+            b.switchToHealth();
+            b.scale(leben);
+        }
+    }
+
 }

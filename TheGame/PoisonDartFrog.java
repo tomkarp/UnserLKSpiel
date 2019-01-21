@@ -11,6 +11,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     int leben=300;
     int schaden=300;
     int rüstung=100;
+    HealthBar b =new HealthBar();
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     /**
      * Act - do whatever the PoisonDartFrog wants to do. This method is called whenever
@@ -19,6 +20,8 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     public PoisonDartFrog(){
         setImage("frogWithArmor.png");
         getImage().scale(40,38);
+        b.setMax(rüstung);
+      getWorld().addObject(b,0,0);
     }
 
     public void act() 
@@ -62,6 +65,17 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
 
     public void regHealth(){
         t.scheduleAtFixedRate(()->leben++,500,500,TimeUnit.MILLISECONDS);
+    }
+
+    public void healthBar(){
+        b.setLocation(getX(),getY()+10);
+        if(rüstung>0){
+            b.scale(rüstung);
+        }
+        else if(rüstung==0){
+            b.switchToHealth();
+            b.scale(leben);
+        }
     }
 
 }

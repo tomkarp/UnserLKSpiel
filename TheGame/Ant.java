@@ -13,9 +13,12 @@ public class Ant extends Actor implements Feind, Treffbar
     int rüstung=20;
     int schaden=200;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
+    HealthBar b =new HealthBar();
     public Ant(){
         setImage("antWithArmor.png");
         getImage().scale(33,20);
+         b.setMax(rüstung);
+         getWorld().addObject(b,0,0);
     }
 
     public void act() 
@@ -58,5 +61,15 @@ public class Ant extends Actor implements Feind, Treffbar
 
     public void regHealth(){
         t.scheduleAtFixedRate(()->leben++,1,1,TimeUnit.SECONDS);
+    }
+     public void healthBar(){
+          b.setLocation(getX(),getY()+10);
+       if(rüstung>0){
+           b.scale(rüstung);
+        }
+        else if(rüstung==0){
+            b.switchToHealth();
+            b.scale(leben);
+        }
     }
 }
