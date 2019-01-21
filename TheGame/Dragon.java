@@ -6,7 +6,7 @@ import java.util.concurrent.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Dragon extends Actor
+public class Dragon extends Actor implements Feind, Treffbar
 {
 
     int leben=900;
@@ -46,7 +46,7 @@ public class Dragon extends Actor
     }
 
     public void damage(int schaden){
-        if(rüstung==0)
+        if(rüstung<=0)
             leben=leben-schaden;
         else
             rüstung=rüstung-schaden;
@@ -58,7 +58,7 @@ public class Dragon extends Actor
 
     public void attack(){
         if(isTouching(Spieler.class)){
-            // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+            getOneIntersectingObject(Spieler.class).damage(schaden);
         }
         if(Greenfoot.getRandomNumber(200)==0){
             getWorld().addObject(new Laser(schussSchaden,getRotation()+90),getX()+10,getY()+10);

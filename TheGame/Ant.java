@@ -7,7 +7,7 @@ import greenfoot.*;
  * @version 0.2
  */
 import java.util.concurrent.*;
-public class Ant extends Actor implements Feind
+public class Ant extends Actor implements Feind, Treffbar
 {
     int leben=100;
     int rüstung=20;
@@ -42,12 +42,12 @@ public class Ant extends Actor implements Feind
 
     public void attack(){
         if(isTouching(Spieler.class)){
-          // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+          getOneIntersectingObject(Spieler.class).damage(schaden);
         }
     }
 
     public void damage(int schaden){
-        if(rüstung==0)
+        if(rüstung<=0)
             leben=leben-schaden;
         else
             rüstung=rüstung-schaden;

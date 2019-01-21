@@ -6,7 +6,7 @@ import java.util.concurrent.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Wombat extends Actor implements Feind
+public class Wombat extends Actor implements Feind, Treffbar
 {
     /**
      * Act - do whatever the Wombat wants to do. This method is called whenever
@@ -49,7 +49,7 @@ public class Wombat extends Actor implements Feind
     }
 
     public void damage(int schaden){
-        if(rüstung==0)
+        if(rüstung<=0)
             leben=leben-schaden;
         else
             rüstung=rüstung-schaden;
@@ -61,7 +61,7 @@ public class Wombat extends Actor implements Feind
 
     public void attack(){
         if(isTouching(Spieler.class)){
-            // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+            getOneIntersectingObject(Spieler.class).damage(schaden);
         }
     }
         public void regHealth(){
