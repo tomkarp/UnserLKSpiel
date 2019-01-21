@@ -6,7 +6,7 @@ public class Doomsday extends Actor implements Waffen
 
     public Doomsday()
     { 
-
+     setImage("balloon2.png");
     }
 
     public void act(){

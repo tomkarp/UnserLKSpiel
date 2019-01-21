@@ -6,7 +6,7 @@ public class Laserphaser extends Actor implements Waffen
     
     public Laserphaser()
     { 
-
+    setImage("balloon1.png");
     }
 
     public void act(){
