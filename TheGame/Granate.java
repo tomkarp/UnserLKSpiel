@@ -1,11 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Granate extends Actor implements Projektil
-{
-    int zeit = 0;
+{ 
+   int zeit;
+   int schaden;
     public Granate(int w){
         setImage("steel-ball.png");
         setRotation(w - 90);
+        schaden=500;
     }
 
     public void act() 
@@ -28,6 +30,12 @@ public class Granate extends Actor implements Projektil
         }
         else if(zeit > 35){
             getWorld().removeObject(this);
+        }
+    }
+    public void checkGegner(){
+        if(isTouching(Treffbar.class)){
+            Treffbar t=(Treffbar)getOneIntersectingObject(Treffbar.class);
+            t.damage(schaden);
         }
     }
 }

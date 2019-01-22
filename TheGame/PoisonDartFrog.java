@@ -30,6 +30,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         healthBar();
         if(!added){
             getWorld().addObject(b,getX(),getY());
+             t.scheduleAtFixedRate(()->leben++,700,700,TimeUnit.MILLISECONDS);
             added=true;
         }
         if(ruestung<=0){
@@ -39,7 +40,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         }
         move();
         attack();
-        regHealth();
+      
     }    
 
     public void move(){
@@ -70,9 +71,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         }
     }
 
-    public void regHealth(){
-        t.scheduleAtFixedRate(()->leben++,500,500,TimeUnit.MILLISECONDS);
-    }
+   
 
     public void healthBar(){
 
