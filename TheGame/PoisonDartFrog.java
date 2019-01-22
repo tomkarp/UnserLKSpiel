@@ -11,7 +11,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     int leben=300;
     int schaden=40;
     boolean added;
-    int maxleben;
+    int max;
     int act;
     int ruestung=100;
     HealthBar b =new HealthBar();
@@ -23,12 +23,12 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     public PoisonDartFrog(){
         setImage("frogWithArmor.png");
         getImage().scale(40,38);
-        b.setMax(ruestung);
-        maxleben=leben;
+        max=ruestung+leben;
     }
 
     public void act() 
     {
+        if(leben>0)
         healthBar();
         if(!added){
             getWorld().addObject(b,getX(),getY());
@@ -46,7 +46,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     }    
 
     public void regHealth(){
-        if(leben<maxleben&&act%50==0){
+        if(leben<(max-ruestung)&&act%50==0){
             leben++;
         }
     }
@@ -61,14 +61,19 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         }
     }
 
-    public void damage(int schaden){
+     public void damage(int schaden){
         if(ruestung<=0)
             leben=leben-schaden;
-        else
+        else if(schaden<ruestung)
             ruestung=ruestung-schaden;
+        else if(schaden>ruestung){
+            schaden=schaden-ruestung;
+            ruestung=0;
+            leben=leben-schaden;
+        }
         if(leben<=0){
+            getWorld().removeObject(b);
             getWorld().removeObject(this);
-            getWorld().addObject(new Poison(),getX(),getY());
         }
     }
 
@@ -80,14 +85,8 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     }
 
     public void healthBar(){
-        b.setLocation(getX(),getY()+20);
-        if(ruestung>0){
-            b.scaleB(ruestung,getRotation());
-        }
-        else if(ruestung<=0){
-            b.switchToHealth();
-            b.scaleB(leben,getRotation());
-        }
+        b.setLocation(getX(),getY()+20);    
+        b.scaleB(leben+ruestung,max,getRotation());        
     }
 
 }

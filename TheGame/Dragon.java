@@ -15,7 +15,7 @@ public class Dragon extends Actor implements Feind, Treffbar
     boolean added;
     int ruestung=800;
     int schussSchaden=900;
-    int maxleben;
+    int max;
     int act;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     HealthBar b =new HealthBar();
@@ -26,12 +26,12 @@ public class Dragon extends Actor implements Feind, Treffbar
     public Dragon(){
         setImage("dragonWithArmor.png");
         getImage().scale(100,100);
-        b.setMax(ruestung);
-        maxleben=leben;
+       max=ruestung+leben;
     }
 
     public void act() 
     {
+        if(leben>0)
         healthBar();
         if(!added){
             getWorld().addObject(b,getX(),getY());
@@ -49,7 +49,7 @@ public class Dragon extends Actor implements Feind, Treffbar
     }   
 
     public void regHealth(){
-        if(leben<maxleben&&act%30==0){
+        if(leben<(max-ruestung)&&act%30==0){
             leben++;
         }
     }
@@ -64,12 +64,18 @@ public class Dragon extends Actor implements Feind, Treffbar
         }
     }
 
-    public void damage(int s){
+     public void damage(int schaden){
         if(ruestung<=0)
-            leben=leben-s;
-        else
-            ruestung=ruestung-s;
+            leben=leben-schaden;
+        else if(schaden<ruestung)
+            ruestung=ruestung-schaden;
+        else if(schaden>ruestung){
+            schaden=schaden-ruestung;
+            ruestung=0;
+            leben=leben-schaden;
+        }
         if(leben<=0){
+            getWorld().removeObject(b);
             getWorld().removeObject(this);
         }
     }
@@ -87,14 +93,7 @@ public class Dragon extends Actor implements Feind, Treffbar
 
     public void healthBar(){
         b.setLocation(getX(),getY()+20);
-        if(ruestung>=0){
-            System.out.println(ruestung+"vorher");
-            b.scaleB(ruestung,getRotation());
-
-        }
-        else if(ruestung<=0){
-            b.switchToHealth();
-            b.scaleB(leben,getRotation());
+        b.scaleB(leben+ruestung,max,getRotation());
         }
     }
-}
+
