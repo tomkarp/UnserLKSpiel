@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Laser
-comment1.params=schaden\ w
-comment1.target=Laser(int,\ int)
+comment1.params=w
+comment1.target=Laser(int)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=

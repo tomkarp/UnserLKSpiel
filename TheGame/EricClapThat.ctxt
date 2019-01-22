@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=EricClapThat
+comment1.params=
+comment1.target=EricClapThat()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=w
+comment3.target=void\ attacke(int)
+comment4.params=winkel
+comment4.target=void\ zielen(int)
+comment5.params=x\ y\ winkel
+comment5.target=void\ tragen(int,\ int,\ int)
+numComments=6

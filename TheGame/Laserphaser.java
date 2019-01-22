@@ -3,20 +3,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Laserphaser extends Actor implements Waffen
 {   
     int cooldown;
-    
+
     public Laserphaser()
     { 
-    setImage("balloon1.png");
+        setImage("balloon1.png");
     }
 
     public void act(){
+        if (cooldown != 0){
+            cooldown--;
+        }
     }
 
     public void attacke(int w){
-       
-            getWorld().addObject(new Laser(w,200), getX(), getY());
-           
-       
+        if(cooldown == 0){
+            getWorld().addObject(new Laser(w),getX(),getY() );
+            cooldown = 10;
+        }
     }
 
     public void zielen(int w){
