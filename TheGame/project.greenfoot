@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Greenfoot project file
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
@@ -19,6 +20,29 @@ class.Granate.image=steel-ball.png
 class.Granate.superclass=greenfoot.Actor
 class.HealthBar.superclass=greenfoot.Actor
 class.Hellebarde.image=Hellebarde.png
+=======
+#Greenfoot properties
+<<<<<<< HEAD
+#Tue Jan 22 22:46:51 CET 2019
+=======
+#Tue Jan 22 22:36:39 CET 2019
+>>>>>>> 62fee3bc4b8552dae2fa330c48acb5ee1ae82de8
+target16.name=Explosion
+class.Spieler.image=baby1.png
+dependency35.to=Snickers
+target2.name=Ant
+target9.name=Trank
+target23.name=Laser
+dependency11.type=UsesDependency
+class.KleineImpressionAusDemChinaRestaraunt.image=st\u00E4bchen.png
+target23.y=0
+target23.x=0
+dependency18.type=UsesDependency
+dependency15.from=Laserphaser
+target21.showInterface=false
+target19.width=80
+yPosition=133
+>>>>>>> ffe721d7ceae0781d81679e8b7875599feeff2d9
 class.Hellebarde.superclass=greenfoot.Actor
 class.KleineImpressionAusDemChinaRestaraunt.image=st\u00E4bchen.png
 class.KleineImpressionAusDemChinaRestaraunt.superclass=greenfoot.Actor
@@ -28,6 +52,7 @@ class.MyWorld.superclass=greenfoot.World
 class.Poison.superclass=greenfoot.Actor
 class.PoisonDartFrog.superclass=greenfoot.Actor
 class.Powerup.superclass=
+<<<<<<< HEAD
 class.Projektil.superclass=
 class.Snickers.superclass=greenfoot.Actor
 class.Spieler.image=baby1.png
@@ -39,6 +64,38 @@ class.Wombat.image=wombat.png
 class.Wombat.superclass=greenfoot.Actor
 dependency1.from=Wombat
 dependency1.to=Poison
+=======
+target14.type=ClassTarget
+<<<<<<< HEAD
+simulation.speed=47
+=======
+simulation.speed=66
+>>>>>>> 62fee3bc4b8552dae2fa330c48acb5ee1ae82de8
+dependency25.type=UsesDependency
+dependency22.from=PoisonDartFrog
+target15.width=80
+dependency29.from=Spieler
+class.Feind.superclass=
+target15.height=50
+target7.type=ClassTarget
+target15.typeParameters=
+publish.hasSource=false
+target11.width=110
+target21.type=InterfaceTarget
+dependency25.to=Wombat
+dependency32.type=UsesDependency
+target1.typeParameters=
+dependency39.type=UsesDependency
+dependency36.from=MyWorld
+target20.showInterface=false
+dependency2.to=Spieler
+class.Wombat.superclass=greenfoot.Actor
+<<<<<<< HEAD
+dependency46.to=Dragon
+=======
+dependency46.to=Spieler
+>>>>>>> 62fee3bc4b8552dae2fa330c48acb5ee1ae82de8
+>>>>>>> ffe721d7ceae0781d81679e8b7875599feeff2d9
 dependency1.type=UsesDependency
 dependency10.from=Dragon
 dependency10.to=Laser
@@ -122,16 +179,61 @@ dependency34.from=MyWorld
 dependency34.to=Doomsday
 dependency34.type=UsesDependency
 dependency35.from=MyWorld
+<<<<<<< HEAD
 dependency35.to=Snickers
 dependency35.type=UsesDependency
 dependency36.from=MyWorld
 dependency36.to=Ant
 dependency36.type=UsesDependency
 dependency37.from=MyWorld
+=======
+target3.y=0
+target3.x=0
+>>>>>>>=dffe358b2f7ecd4d9b692a8b04b538727f492416
+target7.typeParameters=
+dependency26.to=Doomsday
+<<<<<<< HEAD
+=======
+target8.height=50
+>>>>>>> 62fee3bc4b8552dae2fa330c48acb5ee1ae82de8
+mainWindow.y=32
+class.Laser.superclass=greenfoot.Actor
+mainWindow.x=-8
+target12.showInterface=false
+target3.showInterface=false
+target17.typeParameters=
+dependency3.to=HealthBar
+target1.width=80
+dependency40.type=UsesDependency
+dependency7.type=UsesDependency
+dependency4.from=Ant
+dependency44.from=Granate
+class.Explosion.image=explosion1.png
+dependency20.to=Poison
+target22.y=0
+target22.x=0
+target14.name=MyWorld
+target9.height=50
+class.Doomsday.image=st\u00E4bchen.png
+<<<<<<< HEAD
+target2.showInterface=false
+=======
+>>>>>>> 62fee3bc4b8552dae2fa330c48acb5ee1ae82de8
+target11.showInterface=false
+target2.showInterface=false
+target7.name=Doomsday
+dependency41.to=Spieler
+dependency16.to=Laser
+target21.name=Effekte
+dependency13.from=Trank
+dependency16.type=UsesDependency
+target14.typeParameters=
+>>>>>>> ffe721d7ceae0781d81679e8b7875599feeff2d9
 dependency37.to=PoisonDartFrog
 dependency37.type=UsesDependency
 dependency38.from=MyWorld
 dependency38.to=Wombat
+<<<<<<< HEAD
 dependency38.type=UsesDependency
 dependency39.from=MyWorld
 dependency39.to=Dragon
@@ -156,6 +258,35 @@ dependency44.to=Explosion
 dependency44.type=UsesDependency
 dependency45.from=Granate
 dependency45.to=Treffbar
+=======
+target18.type=InterfaceTarget
+target17.height=50
+dependency29.type=UsesDependency
+dependency26.from=Spieler
+target6.typeParameters=
+target4.type=InterfaceTarget
+class.Ant.image=ant3.png
+class.Fries.image=snickers.png
+dependency33.from=MyWorld
+editor.fx.0.y=56
+dependency36.type=UsesDependency
+editor.fx.0.x=2176
+dependency11.to=Spieler
+target6.height=50
+editor.fx.0.width=816
+class.Granate.image=steel-ball.png
+target24.width=80
+class.EricClapThat.superclass=greenfoot.Actor
+class.Effekte.superclass=
+dependency32.to=Trank
+class.Treffbar.superclass=
+target21.y=0
+class.KleineImpressionAusDemChinaRestaraunt.superclass=greenfoot.Actor
+target21.x=0
+target20.typeParameters=
+dependency5.type=UsesDependency
+dependency2.from=Wombat
+>>>>>>> ffe721d7ceae0781d81679e8b7875599feeff2d9
 dependency45.type=UsesDependency
 dependency46.from=Granate
 dependency46.to=Spieler
@@ -247,6 +378,7 @@ target14.type=ClassTarget
 target14.typeParameters=
 target14.width=80
 target14.x=0
+<<<<<<< HEAD
 target14.y=0
 target15.height=50
 target15.name=Hellebarde
@@ -261,6 +393,25 @@ target16.name=Treffbar
 target16.showInterface=false
 target16.type=InterfaceTarget
 target16.typeParameters=
+=======
+target10.type=ClassTarget
+dependency18.to=Snickers
+dependency21.type=UsesDependency
+package.numDependencies=46
+target17.type=InterfaceTarget
+dependency25.from=Spieler
+dependency28.type=UsesDependency
+target10.y=0
+target3.type=ClassTarget
+target10.x=0
+target23.showInterface=false
+dependency39.to=Dragon
+target24.type=ClassTarget
+readme.name=@README
+class.EricClapThat.image=EricClapThat.png
+dependency32.from=MyWorld
+dependency35.type=UsesDependency
+>>>>>>> ffe721d7ceae0781d81679e8b7875599feeff2d9
 target16.width=80
 target16.x=0
 target16.y=0
@@ -292,6 +443,7 @@ target2.height=50
 target2.name=Ant
 target2.showInterface=false
 target2.type=ClassTarget
+<<<<<<< HEAD
 target2.typeParameters=
 target2.width=80
 target2.x=0
@@ -334,6 +486,15 @@ target24.showInterface=false
 target24.type=ClassTarget
 target24.typeParameters=
 target24.width=80
+=======
+target24.y=0
+<<<<<<< HEAD
+dependency44.to=Spieler
+target9.type=ClassTarget
+=======
+dependency44.to=Treffbar
+>>>>>>> 62fee3bc4b8552dae2fa330c48acb5ee1ae82de8
+>>>>>>> ffe721d7ceae0781d81679e8b7875599feeff2d9
 target24.x=0
 target24.y=0
 target3.height=50
@@ -380,6 +541,7 @@ target8.height=50
 target8.name=EricClapThat
 target8.showInterface=false
 target8.type=ClassTarget
+<<<<<<< HEAD
 target8.typeParameters=
 target8.width=90
 target8.x=0
@@ -394,6 +556,37 @@ target9.x=0
 target9.y=0
 version=3.0.0
 width=875
+=======
+target23.width=80
+dependency1.to=Poison
+class.HealthBar.superclass=greenfoot.Actor
+target22.type=ClassTarget
+dependency30.from=Spieler
+dependency33.type=UsesDependency
+class.Fries.superclass=greenfoot.Actor
+target5.width=250
+dependency45.to=Treffbar
+dependency37.from=MyWorld
+target8.y=0
+target8.x=0
+target12.width=110
+dependency2.type=UsesDependency
+class.Wombat.image=wombat.png
+target4.y=0
+target4.x=0
+dependency42.type=UsesDependency
+target20.height=50
+target12.height=50
+dependency9.type=UsesDependency
+dependency6.from=Dragon
+<<<<<<< HEAD
+target12.height=50
+dependency46.from=Laser
+=======
+dependency46.from=Poison
+>>>>>>> 62fee3bc4b8552dae2fa330c48acb5ee1ae82de8
+target21.typeParameters=
+>>>>>>> ffe721d7ceae0781d81679e8b7875599feeff2d9
 world.lastInstantiated=MyWorld
 xPosition=222
 yPosition=133
