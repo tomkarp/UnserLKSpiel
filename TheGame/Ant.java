@@ -7,22 +7,32 @@ import greenfoot.*;
  * @version 0.2
  */
 import java.util.concurrent.*;
-public class Ant extends Actor implements Feind
+public class Ant extends Actor implements Feind, Treffbar
 {
     int leben=100;
-    int rüstung=20;
-    int schaden=200;
+    int ruestung=20;
+    boolean added;
+    int schaden=20;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
+    HealthBar b =new HealthBar();
     public Ant(){
         setImage("antWithArmor.png");
         getImage().scale(33,20);
+        b.setMax(ruestung);
+       
     }
 
     public void act() 
     {
-        if(rüstung<=0){
+        healthBar();
+         if(!added){
+             getWorld().addObject(b,getX(),getY());
+             added=true;
+        }
+        if(ruestung<=0){
             setImage("ant.png");
-            leben=leben+rüstung;
+            getImage().scale(33,20);
+            leben=leben+ruestung;
         }
         move();
         attack();
@@ -30,9 +40,9 @@ public class Ant extends Actor implements Feind
     }    
 
     public void move(){
-       move(3);
-       if(Greenfoot.getRandomNumber(30)==0){
-           turn(Greenfoot.getRandomNumber(360));
+        move(3);
+        if(Greenfoot.getRandomNumber(30)==0){
+            turn(Greenfoot.getRandomNumber(360));
         }
         if(isAtEdge()){
             turn(180);
@@ -41,15 +51,16 @@ public class Ant extends Actor implements Feind
 
     public void attack(){
         if(isTouching(Spieler.class)){
-          // getOneIntersectingObject(Spieler.class).treffeBaby(schaden);
+            Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
+            t.damage(schaden);
         }
     }
 
     public void damage(int schaden){
-        if(rüstung==0)
+        if(ruestung<=0)
             leben=leben-schaden;
         else
-            rüstung=rüstung-schaden;
+            ruestung=ruestung-schaden;
         if(leben<=0){
             getWorld().removeObject(this);
         }
@@ -57,5 +68,17 @@ public class Ant extends Actor implements Feind
 
     public void regHealth(){
         t.scheduleAtFixedRate(()->leben++,1,1,TimeUnit.SECONDS);
+    }
+
+    public void healthBar(){
+        b.setLocation(getX(),getY()+20);
+        if(ruestung>0){
+            b.scaleB(ruestung,getRotation());
+
+        }
+        else if(ruestung==0){
+            b.switchToHealth();
+            b.scaleB(leben,getRotation());
+        }
     }
 }

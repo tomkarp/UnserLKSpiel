@@ -15,12 +15,15 @@ public class Spieler extends Actor implements Treffbar
     Waffen aktuelleWaffe; 
 
     public Spieler(){
+        setImage("CharakterV.png");
         blickWinkel = 1;
         i = 1;
+        leben=10000;
     }
 
     public void act() 
     {
+        checkLeben();
         if (i> 0){
             waffenWechsel();
             i--;
@@ -32,8 +35,17 @@ public class Spieler extends Actor implements Treffbar
             kreis();
             attacke();
         }
-    }  
-    
+
+    } 
+
+    public void checkLeben(){
+        getWorld().showText("Leben: "+leben,100,100);
+        if(leben<=0){
+            getWorld().showText("GAME OVER",getWorld().getWidth()/2,getWorld().getHeight()/2);
+            Greenfoot.stop();
+        }
+    }
+
     public void damage(int s){
         leben = leben - s;
     }
@@ -105,13 +117,21 @@ public class Spieler extends Actor implements Treffbar
     }
 
     private void bewegen(){
-        if(Greenfoot.isKeyDown("w"))
+        if(Greenfoot.isKeyDown("w")){
             setLocation(getX(), getY() - 3);
-        if(Greenfoot.isKeyDown("s"))
+            setImage("CharakterH.png");
+        }
+        if(Greenfoot.isKeyDown("s")){
             setLocation(getX(), getY() + 3);
-        if(Greenfoot.isKeyDown("a"))
+            setImage("CharakterV.png");
+        }
+        if(Greenfoot.isKeyDown("a")){
             setLocation(getX() - 3, getY());
-        if(Greenfoot.isKeyDown("d"))
+            setImage("CharakterL.png");
+        }
+        if(Greenfoot.isKeyDown("d")){
             setLocation(getX() + 3, getY());
+            setImage("CharakterR.png");
+        }
     }
 }

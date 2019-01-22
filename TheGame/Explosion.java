@@ -6,7 +6,7 @@ public class Explosion extends Actor implements Effekte
     int i;
 
     public Explosion(){
-
+     setImage("beeper.png");
     }
 
     public void act() 

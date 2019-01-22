@@ -1,40 +1,43 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.concurrent.*;
 /**
- * Write a description of class PoisonDartFrog here.
+ * Write a description of class Wombat here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PoisonDartFrog extends Actor implements Feind, Treffbar
+public class Wombat extends Actor implements Feind, Treffbar
 {
-    int leben=300;
-    int schaden=40;
-    boolean added;
-    int ruestung=100;
-    HealthBar b =new HealthBar();
-    ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     /**
-     * Act - do whatever the PoisonDartFrog wants to do. This method is called whenever
+     * Act - do whatever the Wombat wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public PoisonDartFrog(){
-        setImage("frogWithArmor.png");
-        getImage().scale(40,38);
+
+    int ruestung=300;
+    int schaden=50;
+    int leben=600;
+    boolean added;
+    HealthBar b = new HealthBar();
+    static int wombatdeathcounter = 1;
+
+    ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
+    public Wombat(){
+        setImage("wombatWithArmor.png");
         b.setMax(ruestung);
-
+       
     }
-
+  
+      
+  
     public void act() 
     {
         healthBar();
         if(!added){
-            getWorld().addObject(b,getX(),getY());
-            added=true;
+             getWorld().addObject(b,getX(),getY());
+             added=true;
         }
         if(ruestung<=0){
-            setImage("frog.png");
-            getImage().scale(40,38);
+            setImage("wombat.png");
             leben=leben+ruestung;
         }
         move();
@@ -50,6 +53,13 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         if(isAtEdge()){
             turn(180);
         }
+        if(Greenfoot.getRandomNumber(300)==0){
+            int nX=getX()+Greenfoot.getRandomNumber(100);
+            int nY=getY()+Greenfoot.getRandomNumber(100);
+            if(nX<=getWorld().getWidth()&&nX>=0&&nY<=getWorld().getHeight()&&nY>=0){
+                setLocation(nX,nY);
+            }
+        }
     }
 
     public void damage(int schaden){
@@ -59,7 +69,8 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
             ruestung=ruestung-schaden;
         if(leben<=0){
             getWorld().removeObject(this);
-            getWorld().addObject(new Poison(),getX(),getY());
+            wombatdeathcounter++;
+
         }
     }
 
@@ -71,16 +82,15 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     }
 
     public void regHealth(){
-        t.scheduleAtFixedRate(()->leben++,500,500,TimeUnit.MILLISECONDS);
+        t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
     }
 
     public void healthBar(){
-
         b.setLocation(getX(),getY()+20);
         if(ruestung>0){
             b.scaleB(ruestung,getRotation());
         }
-        else if(ruestung==0){
+       if(ruestung==0){
             b.switchToHealth();
             b.scaleB(leben,getRotation());
         }
