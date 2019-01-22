@@ -64,7 +64,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
      public void damage(int schaden){
         if(ruestung<=0)
             leben=leben-schaden;
-        else if(schaden<ruestung)
+        else if(schaden<=ruestung)
             ruestung=ruestung-schaden;
         else if(schaden>ruestung){
             schaden=schaden-ruestung;

@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Spieler extends Actor implements Treffbar
+public class Spieler extends Actor 
 {
     int leben;
     int ausdauer;
