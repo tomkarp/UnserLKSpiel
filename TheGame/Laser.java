@@ -1,8 +1,8 @@
 import greenfoot.*; 
 public class Laser extends Actor implements Projektil  
 {
-
     int schaden;
+    
     public Laser(int w)
     {
         schaden=70;
