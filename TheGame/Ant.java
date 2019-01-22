@@ -84,7 +84,7 @@ public class Ant extends Actor implements Feind
     }
 
     public void healthBar(){
-        b.setLocation(getX(),getY()+20);        
+        b.setLocation(getX(),getY()+15);        
         b.scaleB(leben+ruestung,max,getRotation());
     }
 

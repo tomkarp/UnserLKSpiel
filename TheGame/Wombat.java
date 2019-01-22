@@ -81,6 +81,7 @@ public class Wombat extends Actor implements Feind
         if(leben<=0){
             getWorld().removeObject(b);
             getWorld().removeObject(this);
+            wombatdeathcounter++;
         }
     }
     

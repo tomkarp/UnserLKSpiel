@@ -10,7 +10,7 @@ import java.util.concurrent.*;
 public class Dragon extends Actor implements Feind
 {
 
-    int leben=900;
+    int leben=1000;
     int schaden=200;
     boolean added;
     int ruestung=800;
@@ -86,7 +86,7 @@ public class Dragon extends Actor implements Feind
             Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
             t.damage(schaden);
         }
-        if(Greenfoot.getRandomNumber(200)==0){
+        if(Greenfoot.getRandomNumber(10)==0){
             getWorld().addObject(new Laser(getRotation()+90),getX()+10,getY()+10);
         }
     }
