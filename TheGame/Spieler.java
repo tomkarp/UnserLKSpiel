@@ -36,6 +36,7 @@ public class Spieler extends Actor implements Treffbar
 		}
 	} 
 	public void checkLeben(){
+	    getWorld().showText("Leben: "+leben,100,100);
 	    if(leben<=0){
 	        getWorld().showText("GAME OVER",getWorld().getWidth()/2,getWorld().getHeight()/2);
 	        Greenfoot.stop();

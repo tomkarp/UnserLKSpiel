@@ -12,7 +12,7 @@ public class Ant extends Actor implements Feind, Treffbar
     int leben=100;
     int ruestung=20;
     boolean added;
-    int schaden=200;
+    int schaden=20;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     HealthBar b =new HealthBar();
     public Ant(){

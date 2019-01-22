@@ -9,7 +9,7 @@ import java.util.concurrent.*;
 public class PoisonDartFrog extends Actor implements Feind, Treffbar
 {
     int leben=300;
-    int schaden=300;
+    int schaden=40;
     boolean added;
     int ruestung=100;
     HealthBar b =new HealthBar();

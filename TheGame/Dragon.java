@@ -11,10 +11,10 @@ public class Dragon extends Actor implements Feind, Treffbar
 {
 
     int leben=900;
-    int schaden=800;
+    int schaden=200;
     boolean added;
     int ruestung=800;
-    int schussSchaden=400;
+    int schussSchaden=900;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     HealthBar b =new HealthBar();
     /**
