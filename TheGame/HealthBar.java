@@ -19,7 +19,10 @@ public class HealthBar extends Actor
         length=length/2;
         System.out.println(length+"angepasst");
         int print= (int) length;
+        if(print!=0)
         getImage().scale(print,7);
+        else if(print==0)
+        getImage().scale(1,7);
         setRotation(rotation);
     }
 

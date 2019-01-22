@@ -24,7 +24,7 @@ public class Ant extends Actor implements Feind, Treffbar
 
     public void act() 
     {
-        if(leben>0)
+        if(leben>=0)
         healthBar();
         
         if(!added){

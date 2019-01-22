@@ -13,19 +13,18 @@ public class Laser extends Actor implements Projektil
 
     public void act(){
         checkGegner();
-        if(isAtEdge()){
-            remove();
-        }
-        else{
-            move(15);
-        } 
-
+        move(15);
     }
 
     public void checkGegner(){
         if(isTouching(Treffbar.class)){
             Treffbar t=(Treffbar)getOneIntersectingObject(Treffbar.class);
             t.damage(schaden);
+            getWorld().removeObject(this);
+
+        }
+        else if(isAtEdge()){
+            remove();
         }
     }
 
