@@ -73,6 +73,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         }
         if(leben<=0){
             getWorld().removeObject(b);
+            getWorld().addObject(new Poison(),getX(),getY());
             getWorld().removeObject(this);
         }
     }

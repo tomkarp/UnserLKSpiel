@@ -23,19 +23,23 @@ public class Poison extends Actor
     public void act() 
     {
         vanish();
-       attack();
+       
     }    
 
     public void vanish(){
         schritte++;
-        if(schritte==600){
+        if(schritte==800){
             getWorld().removeObject(this);
+        }else{
+             attack();
         }
     }
+
     public void attack(){
         if(isTouching(Spieler.class)){
-            //treffeBaby(schaden)
+            Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
+            t.damage(schaden);
         }
     }
- 
+
 }
