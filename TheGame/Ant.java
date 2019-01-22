@@ -27,6 +27,7 @@ public class Ant extends Actor implements Feind, Treffbar
         healthBar();
          if(!added){
              getWorld().addObject(b,getX(),getY());
+             t.scheduleAtFixedRate(()->leben++,1,1,TimeUnit.SECONDS);
              added=true;
         }
         if(ruestung<=0){
@@ -36,7 +37,7 @@ public class Ant extends Actor implements Feind, Treffbar
         }
         move();
         attack();
-        regHealth();
+       
     }    
 
     public void move(){
@@ -47,6 +48,7 @@ public class Ant extends Actor implements Feind, Treffbar
         if(isAtEdge()){
             turn(180);
         }
+        
     }
 
     public void attack(){
@@ -66,9 +68,6 @@ public class Ant extends Actor implements Feind, Treffbar
         }
     }
 
-    public void regHealth(){
-        t.scheduleAtFixedRate(()->leben++,1,1,TimeUnit.SECONDS);
-    }
 
     public void healthBar(){
         b.setLocation(getX(),getY()+20);

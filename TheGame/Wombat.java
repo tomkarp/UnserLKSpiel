@@ -34,6 +34,7 @@ public class Wombat extends Actor implements Feind, Treffbar
         healthBar();
         if(!added){
              getWorld().addObject(b,getX(),getY());
+              t.scheduleAtFixedRate(()->leben++,500,500,TimeUnit.MILLISECONDS);
              added=true;
         }
         if(ruestung<=0){
@@ -42,7 +43,7 @@ public class Wombat extends Actor implements Feind, Treffbar
         }
         move();
         attack();
-        regHealth();
+        
     }    
 
     public void move(){
@@ -81,9 +82,7 @@ public class Wombat extends Actor implements Feind, Treffbar
         }
     }
 
-    public void regHealth(){
-        t.scheduleAtFixedRate(()->leben++,200,200,TimeUnit.MILLISECONDS);
-    }
+
 
     public void healthBar(){
         b.setLocation(getX(),getY()+20);

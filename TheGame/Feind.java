@@ -4,7 +4,6 @@ public interface Feind
     //public void damage(int schaden);
     public void attack();
     public void move();
-    public void regHealth();
     public void healthBar();
    
 }
