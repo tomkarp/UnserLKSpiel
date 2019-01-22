@@ -1,25 +1,26 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
 public class HealthBar extends Actor
 {
-    int max;
+
     public HealthBar(){
-         setImage("armorBar.png");
-         getImage().scale(25,7);
-    }
- 
-    public void setMax(int max){
-        this.max=max;
+        setImage("healthBar.png");
+        getImage().scale(25,7);
     }
 
-    public void scaleB(int current,int rotation){
-        int length=((current/max)*100)/4;
-        getImage().scale(length,7);
+
+    public void scaleB(int current,int max,int rotation){
+        System.out.println(current+"c"+max+"m");
+        float length=current;
+        length=length/max;
+        System.out.println(length+"percentage");
+        length=length*100;
+        System.out.println("als richtige Zahl"+length);
+        length=length/2;
+        System.out.println(length+"angepasst");
+        int print= (int) length;
+        getImage().scale(print,7);
         setRotation(rotation);
     }
 
-    public void switchToHealth(){
-      setImage("healthBar.png");
-    }
 }

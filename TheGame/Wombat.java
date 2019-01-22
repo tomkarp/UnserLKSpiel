@@ -16,26 +16,25 @@ public class Wombat extends Actor implements Feind, Treffbar
     int ruestung=300;
     int schaden=50;
     int leben=600;
+    int max;
     boolean added;
     HealthBar b = new HealthBar();
     static int wombatdeathcounter = 1;
-
-    ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
+    int act;
     public Wombat(){
         setImage("wombatWithArmor.png");
-        b.setMax(ruestung);
-       
+        max=ruestung+leben;
     }
-  
-      
-  
+
     public void act() 
     {
+        regHealth();
+        if(leben>0)
         healthBar();
+        
         if(!added){
-             getWorld().addObject(b,getX(),getY());
-              t.scheduleAtFixedRate(()->leben++,500,500,TimeUnit.MILLISECONDS);
-             added=true;
+            getWorld().addObject(b,getX(),getY());
+            added=true;
         }
         if(ruestung<=0){
             setImage("wombat.png");
@@ -43,8 +42,14 @@ public class Wombat extends Actor implements Feind, Treffbar
         }
         move();
         attack();
-        
+        act++;
     }    
+
+    public void regHealth(){
+        if(leben<(max-ruestung)&&act%50==0){
+            leben++;
+        }
+    }
 
     public void move(){
         move(2);
@@ -63,17 +68,22 @@ public class Wombat extends Actor implements Feind, Treffbar
         }
     }
 
-    public void damage(int schaden){
+     public void damage(int schaden){
         if(ruestung<=0)
             leben=leben-schaden;
-        else
+        else if(schaden<ruestung)
             ruestung=ruestung-schaden;
+        else if(schaden>ruestung){
+            schaden=schaden-ruestung;
+            ruestung=0;
+            leben=leben-schaden;
+        }
         if(leben<=0){
+            getWorld().removeObject(b);
             getWorld().removeObject(this);
-            wombatdeathcounter++;
-
         }
     }
+    
 
     public void attack(){
         if(isTouching(Spieler.class)){
@@ -82,17 +92,9 @@ public class Wombat extends Actor implements Feind, Treffbar
         }
     }
 
-
-
     public void healthBar(){
         b.setLocation(getX(),getY()+20);
-        if(ruestung>0){
-            b.scaleB(ruestung,getRotation());
-        }
-       if(ruestung==0){
-            b.switchToHealth();
-            b.scaleB(leben,getRotation());
-        }
+        b.scaleB(ruestung+leben,max,getRotation());
     }
 
 }

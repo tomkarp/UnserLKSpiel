@@ -13,22 +13,24 @@ public class Ant extends Actor implements Feind, Treffbar
     int ruestung=20;
     boolean added;
     int schaden=20;
-    ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
+    int max;
+    int act;
     HealthBar b =new HealthBar();
     public Ant(){
         setImage("antWithArmor.png");
         getImage().scale(33,20);
-        b.setMax(ruestung);
-       
+        max=ruestung+leben;
     }
 
     public void act() 
     {
+        if(leben>0)
         healthBar();
-         if(!added){
-             getWorld().addObject(b,getX(),getY());
-             t.scheduleAtFixedRate(()->leben++,1,1,TimeUnit.SECONDS);
-             added=true;
+        
+        if(!added){
+            getWorld().addObject(b,getX(),getY());
+
+            added=true;
         }
         if(ruestung<=0){
             setImage("ant.png");
@@ -37,8 +39,15 @@ public class Ant extends Actor implements Feind, Treffbar
         }
         move();
         attack();
-       
+        act++;
+        regHealth();
     }    
+
+    public void regHealth(){
+        if(leben<(max-ruestung)&&act%50==0){
+            leben++;
+        }
+    }
 
     public void move(){
         move(3);
@@ -48,7 +57,7 @@ public class Ant extends Actor implements Feind, Treffbar
         if(isAtEdge()){
             turn(180);
         }
-        
+
     }
 
     public void attack(){
@@ -61,23 +70,22 @@ public class Ant extends Actor implements Feind, Treffbar
     public void damage(int schaden){
         if(ruestung<=0)
             leben=leben-schaden;
-        else
+        else if(schaden<ruestung)
             ruestung=ruestung-schaden;
+        else if(schaden>ruestung){
+            schaden=schaden-ruestung;
+            ruestung=0;
+            leben=leben-schaden;
+        }
         if(leben<=0){
+            getWorld().removeObject(b);
             getWorld().removeObject(this);
         }
     }
 
-
     public void healthBar(){
-        b.setLocation(getX(),getY()+20);
-        if(ruestung>0){
-            b.scaleB(ruestung,getRotation());
-
-        }
-        else if(ruestung==0){
-            b.switchToHealth();
-            b.scaleB(leben,getRotation());
-        }
+        b.setLocation(getX(),getY()+20);        
+        b.scaleB(leben+ruestung,max,getRotation());
     }
+
 }
