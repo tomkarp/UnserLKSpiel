@@ -143,11 +143,6 @@ public class Spieler extends Actor
             getWorld().addObject(waffe,getX(),getY());
         }
         if (Greenfoot.isKeyDown("4")){
-            waffe = eric;
-            aktuelleWaffe = eric;
-            getWorld().addObject(waffe,getX(),getY());
-        }
-        if (Greenfoot.isKeyDown("5")){
             staebchen = new KleineImpressionAusDemChinaRestaraunt();
             waffe = staebchen;
             aktuelleWaffe = staebchen;

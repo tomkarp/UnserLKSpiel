@@ -13,8 +13,8 @@ public class Hellebarde extends Actor implements Waffen
     public void act() 
     {
         cooldown--;
-        if(isTouching(Treffbar.class)){
-            Treffbar t = (Treffbar)getOneIntersectingObject(Treffbar.class);
+        if(isTouching(Feind.class)){
+            Feind t = (Feind)getOneIntersectingObject(Feind.class);
             t.damage(schaden);
         }
     }    
