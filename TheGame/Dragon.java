@@ -86,7 +86,7 @@ public class Dragon extends Actor implements Feind, Treffbar
             Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
             t.damage(schaden);
         }
-        if(Greenfoot.getRandomNumber(200)==0){
+        if(Greenfoot.getRandomNumber(10)==0){
             getWorld().addObject(new Laser(getRotation()+90),getX()+10,getY()+10);
         }
     }

@@ -17,7 +17,7 @@ public class Laser extends Actor implements Projektil
     }
 
     public void checkGegner(){
-        if(isTouching(Treffbar.class)){
+        if(isTouching(Treffbar.class) && !isTouching(Dragon.class)){
             Treffbar t=(Treffbar)getOneIntersectingObject(Treffbar.class);
             t.damage(schaden);
             getWorld().removeObject(this);
