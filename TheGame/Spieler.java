@@ -34,7 +34,7 @@ public class Spieler extends Actor implements Treffbar
         }
     }  
     
-    public void schaden(int s){
+    public void damage(int s){
         leben = leben - s;
     }
 
