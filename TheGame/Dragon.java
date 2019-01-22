@@ -10,7 +10,7 @@ import java.util.concurrent.*;
 public class Dragon extends Actor implements Feind
 {
 
-    int leben=900;
+    int leben=1000;
     int schaden=200;
     boolean added;
     int ruestung=800;
