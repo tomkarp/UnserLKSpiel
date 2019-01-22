@@ -13,12 +13,10 @@ public class Laserphaser extends Actor implements Waffen
     }
 
     public void attacke(int w){
-        if(cooldown == 0){
+       
             getWorld().addObject(new Laser(w,200), getX(), getY());
-            cooldown = 5;
-        }
-        else 
-            cooldown--;
+           
+       
     }
 
     public void zielen(int w){
