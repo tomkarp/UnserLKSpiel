@@ -17,6 +17,8 @@ public class Dragon extends Actor implements Feind
     int schussSchaden=900;
     int max;
     int act;
+    int x;
+    int y;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     HealthBar b =new HealthBar();
     /**
@@ -26,7 +28,8 @@ public class Dragon extends Actor implements Feind
     public Dragon(){
         setImage("dragonWithArmor.png");
         getImage().scale(100,100);
-       max=ruestung+leben;
+        max=ruestung+leben;
+        
     }
 
     public void act() 
@@ -37,12 +40,19 @@ public class Dragon extends Actor implements Feind
         if(!added){
             getWorld().addObject(b,getX(),getY());
             added=true;
+            x = getX();
+            y = getY();
+            getWorld().showText("Lasers can't hurt me at all, haha", x, y);
         }
         if(ruestung<=0){
             setImage("dragon.png");
             getImage().scale(100,100);
             leben=leben+ruestung;
         }
+        if(act>100){
+           getWorld().showText(" ", x, y);
+        }
+
         move();
         attack();
         act++;
@@ -86,8 +96,9 @@ public class Dragon extends Actor implements Feind
             Spieler t = (Spieler) getOneIntersectingObject(Spieler.class);
             t.damage(schaden);
         }
-        if(Greenfoot.getRandomNumber(10)==0){
-            getWorld().addObject(new Laser(getRotation()+90),getX()+10,getY()+10);
+        if(Greenfoot.getRandomNumber(100)==0){
+            getWorld().addObject(new Laser(getRotation()+90),getX(),getY());
+            
         }
     }
 
