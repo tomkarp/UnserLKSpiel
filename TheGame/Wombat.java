@@ -29,7 +29,7 @@ public class Wombat extends Actor implements Feind, Treffbar
     public void act() 
     {
         regHealth();
-        if(leben>0)
+        if(leben>=0)
         healthBar();
         
         if(!added){
