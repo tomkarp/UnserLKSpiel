@@ -4,6 +4,8 @@ public class Spieler extends Actor implements Treffbar
 {
     int leben;
     int ausdauer;
+    int erholen;
+
     //Trigonometrie
     int i;
     int x;
@@ -21,6 +23,7 @@ public class Spieler extends Actor implements Treffbar
         blickWinkel = 1;
         i = 1;
         leben=10000;
+        ausdauer = 100;
     }
 
     public void act() 
@@ -148,11 +151,17 @@ public class Spieler extends Actor implements Treffbar
                 setLocation(getX() + 3, getY());
             setImage("CharakterR.png");
         }
-        
-        if (ausdauer != 0 && Greenfoot.isKeyDown("shift"))
-            ausdauer--;
-      
-        else if(ausdauer != 100)
-            ausdauer++;
+
+        if (erholen == 0){
+            if (ausdauer != 0 && Greenfoot.isKeyDown("shift"))
+                ausdauer--;
+            if (ausdauer == 0)
+                erholen = 50;
+            if (!Greenfoot.isKeyDown("shift") && ausdauer <= 99){
+                ausdauer++;
+            }
+        }
+        else
+            erholen--;
     }
 }
