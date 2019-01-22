@@ -8,19 +8,23 @@ public class Explosion extends Actor implements Effekte
 
     public Explosion(){
         setImage("explosion1.png");
+        getImage().scale(120,120);
         schaden=300;
     }
 
     public void act() 
     {
         remove();
+
     }    
 
     public void remove(){
-        if (i == 15)
+        if (i == 15 || isAtEdge())
             getWorld().removeObject(this);
-        else
+        else{
+            checkGegner();
             i++;
+        }
     }
 
     public void checkGegner(){
@@ -28,6 +32,5 @@ public class Explosion extends Actor implements Effekte
             Treffbar t=(Treffbar)getOneIntersectingObject(Treffbar.class);
             t.damage(schaden);
         }
-
     }
 }
