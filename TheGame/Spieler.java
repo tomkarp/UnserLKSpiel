@@ -12,8 +12,8 @@ public class Spieler extends Actor implements Treffbar
     Hellebarde hellebarde = new Hellebarde();
     Laserphaser laserPhaser = new Laserphaser();
     Doomsday doomsday = new Doomsday();
+    KleineImpressionAusDemChinaRestaraunt staebchen;
     EricClapThat eric = new EricClapThat();
-    KleineImpressionAusDemChinaRestaraunt staebchen = new KleineImpressionAusDemChinaRestaraunt();
     Waffen aktuelleWaffe; 
     Actor waffe;
 
@@ -113,7 +113,12 @@ public class Spieler extends Actor implements Treffbar
     public void attacke(){
         if(Greenfoot.isKeyDown("space")){
             aktuelleWaffe.attacke((int)blickWinkel);
+            if(aktuelleWaffe == staebchen){
+                aktuelleWaffe = null;
+                waffe = null;
+            }
         }
+
     }
 
     public void waffenWechsel(){
@@ -143,6 +148,7 @@ public class Spieler extends Actor implements Treffbar
             getWorld().addObject(waffe,getX(),getY());
         }
         if (Greenfoot.isKeyDown("5")){
+            staebchen = new KleineImpressionAusDemChinaRestaraunt();
             waffe = staebchen;
             aktuelleWaffe = staebchen;
             getWorld().addObject(waffe,getX(),getY());
