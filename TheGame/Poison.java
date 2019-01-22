@@ -28,7 +28,7 @@ public class Poison extends Actor
 
     public void vanish(){
         schritte++;
-        if(schritte==800){
+        if(schritte==1000){
             getWorld().removeObject(this);
         }else{
              attack();
