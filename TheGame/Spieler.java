@@ -17,10 +17,12 @@ public class Spieler extends Actor implements Treffbar
 	public Spieler(){
 		blickWinkel = 1;
 		i = 1;
+		leben=10000;
 	}
 
 	public void act() 
 	{
+	    checkLeben();
 		if (i> 0){
 			waffenWechsel();
 			i--;
@@ -32,7 +34,13 @@ public class Spieler extends Actor implements Treffbar
 			kreis();
 			attacke();
 		}
-	}  
+	} 
+	public void checkLeben(){
+	    if(leben<=0){
+	        getWorld().showText("GAME OVER",getWorld().getWidth()/2,getWorld().getHeight()/2);
+	        Greenfoot.stop();
+	       }
+	   }
 
 	public void damage(int s){
 		leben = leben - s;
