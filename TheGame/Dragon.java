@@ -42,12 +42,11 @@ public class Dragon extends Actor implements Feind
             added=true;
             x = getX();
             y = getY();
-            getWorld().showText("Lasers can't hurt me at all, haha", x, y);
+            
         }
         if(ruestung<=0){
             setImage("dragon.png");
             getImage().scale(100,100);
-            leben=leben+ruestung;
         }
         if(act>100){
            getWorld().showText(" ", x, y);
@@ -78,7 +77,8 @@ public class Dragon extends Actor implements Feind
      public void damage(int schaden){
         if(ruestung<=0)
             leben=leben-schaden;
-        else if(schaden<ruestung)
+
+        else if(schaden<=ruestung)
             ruestung=ruestung-schaden;
         else if(schaden>ruestung){
             schaden=schaden-ruestung;

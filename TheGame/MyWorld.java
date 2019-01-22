@@ -24,19 +24,19 @@ public class MyWorld extends World
 
     private void erzeugeObjekte() {
         int zufall;
-        zufall = Greenfoot.getRandomNumber(900);
+        zufall = Greenfoot.getRandomNumber(1900);
         if(zufall == 0)
             addObject(new Snickers(), randX(), randY());
-        zufall = Greenfoot.getRandomNumber(900);
+        zufall = Greenfoot.getRandomNumber(1300);
         if(zufall == 0)
             addObject(new Trank(), randX(), randY());
-        zufall = Greenfoot.getRandomNumber(400);
+        zufall = Greenfoot.getRandomNumber(100);
         if(zufall == 0)
             addObject(new Ant(), randX(), randY());
-        zufall = Greenfoot.getRandomNumber(600);
+        zufall = Greenfoot.getRandomNumber(200);
         if(zufall == 0)
             addObject(new PoisonDartFrog(), randX(), randY());  
-        zufall = Greenfoot.getRandomNumber(700);
+        zufall = Greenfoot.getRandomNumber(300);
         if(zufall == 0)
             addObject(new Wombat(), randX(), randY());
         if(Wombat.wombatdeathcounter%4 == 0&&Wombat.wombatdeathcounter!=0){

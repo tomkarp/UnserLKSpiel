@@ -13,7 +13,6 @@ public class Spieler extends Actor
     Laserphaser laserPhaser = new Laserphaser();
     Doomsday doomsday = new Doomsday();
     KleineImpressionAusDemChinaRestaraunt staebchen;
-    EricClapThat eric = new EricClapThat();
     Waffen aktuelleWaffe; 
     Actor waffe;
 
@@ -52,7 +51,6 @@ public class Spieler extends Actor
     }
 
     private void kreis(){
-
         if(Greenfoot.getMouseInfo() != null){
             int a = Greenfoot.getMouseInfo().getX() - getX();
             int b = Greenfoot.getMouseInfo().getY() - getY();
@@ -108,10 +106,11 @@ public class Spieler extends Actor
                 aktuelleWaffe.tragen(getX() + (int)a2 , getY() - (int)b2 , (int)blickWinkel);
             }
         }
+
     }
 
     public void attacke(){
-        if(Greenfoot.isKeyDown("space")){
+        if(Greenfoot.isKeyDown("space") && Greenfoot.getMouseInfo() != null){
             aktuelleWaffe.attacke((int)blickWinkel);
             if(aktuelleWaffe == staebchen){
                 aktuelleWaffe = null;
@@ -122,7 +121,7 @@ public class Spieler extends Actor
     }
 
     public void waffenWechsel(){
-        if(Greenfoot.isKeyDown("1") || Greenfoot.isKeyDown("2") || Greenfoot.isKeyDown("3") || Greenfoot.isKeyDown("4") || Greenfoot.isKeyDown("5") ){
+        if(Greenfoot.isKeyDown("1") || Greenfoot.isKeyDown("2") || Greenfoot.isKeyDown("3") || Greenfoot.isKeyDown("4") || Greenfoot.isKeyDown("5")){
             if (aktuelleWaffe != null){
                 getWorld().removeObject(waffe);
             }

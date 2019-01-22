@@ -9,7 +9,7 @@ public class KleineImpressionAusDemChinaRestaraunt extends Actor implements Waff
     public KleineImpressionAusDemChinaRestaraunt(){
         setImage("stäbchen.png");
         getImage();
-        schaden = 1;
+        schaden = 5;
     }
 
     public void act() 
@@ -19,9 +19,10 @@ public class KleineImpressionAusDemChinaRestaraunt extends Actor implements Waff
             if(isAtEdge()){
                 getWorld().removeObject(this);
             }
-            else{
-                move(25);
-            } 
+            else
+                checkGegner();
+
+            move(25);
         }
     }    
 
@@ -40,6 +41,14 @@ public class KleineImpressionAusDemChinaRestaraunt extends Actor implements Waff
         if (wurf == 0){
             setLocation(x,y);
             setRotation(winkel - 90);
+        }
+    }
+
+    public void checkGegner(){
+        if(isTouching(Feind.class)){
+            Feind t=(Feind)getOneIntersectingObject(Feind.class);
+            t.damage(schaden);
+            getWorld().removeObject(this);
         }
     }
 }
