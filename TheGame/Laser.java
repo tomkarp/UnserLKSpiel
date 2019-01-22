@@ -17,7 +17,7 @@ public class Laser extends Actor implements Projektil
             remove();
         }
         else{
-            move(5);
+            move(15);
         } 
 
     }

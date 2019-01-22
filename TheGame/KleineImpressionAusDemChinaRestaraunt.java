@@ -5,7 +5,7 @@ public class KleineImpressionAusDemChinaRestaraunt extends Actor implements Waff
     int cooldown;
 
     public KleineImpressionAusDemChinaRestaraunt(){
-        setImage("KleineImpressionAusDemChinaRestaraunt.png");
+        setImage("stäbchen.png");
     }
 
     public void act() 
@@ -18,10 +18,11 @@ public class KleineImpressionAusDemChinaRestaraunt extends Actor implements Waff
     }
 
     public void zielen(int winkel){
-
+        setRotation(winkel);
     }
 
     public void tragen(int x , int y , int winkel){
-
+        setLocation(x,y);
+        setRotation(winkel);
     }
 }

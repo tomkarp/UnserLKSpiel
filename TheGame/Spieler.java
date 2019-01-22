@@ -5,37 +5,32 @@ public class Spieler extends Actor implements Treffbar
     int leben;
     int ausdauer;
     int erholen;
-
-    //Trigonometrie
-    int i;
     int x;
     int y;
     double blickWinkel;
-    double alpha;
-    double beta;
-    double a2 ;
-    double b2; 
 
+    Hellebarde hellebarde = new Hellebarde();
+    Laserphaser laserPhaser = new Laserphaser();
+    Doomsday doomsday = new Doomsday();
+    EricClapThat eric = new EricClapThat();
+    KleineImpressionAusDemChinaRestaraunt staebchen = new KleineImpressionAusDemChinaRestaraunt();
     Waffen aktuelleWaffe; 
+    Actor waffe;
 
     public Spieler(){
         setImage("CharakterV.png");
         blickWinkel = 1;
-        i = 1;
         leben=10000;
         ausdauer = 100;
     }
 
     public void act() 
     {
-        text();
-        if (i> 0){
-            waffenWechsel();
-            i--;
-        }
         x = getX();
         y = getY();
+        text();
         bewegen();
+        waffenWechsel();
         if(aktuelleWaffe !=  null){
             kreis();
             attacke();
@@ -57,10 +52,15 @@ public class Spieler extends Actor implements Treffbar
     }
 
     private void kreis(){
+
         if(Greenfoot.getMouseInfo() != null){
             int a = Greenfoot.getMouseInfo().getX() - getX();
             int b = Greenfoot.getMouseInfo().getY() - getY();
             double c = Math.sqrt(a*a +  b*b);
+            double alpha;
+            double beta;
+            double a2 ;
+            double b2; 
             final double gamma = 90;
             final int c2 = 40;
             if(a >= 0 && b > 0){
@@ -117,9 +117,36 @@ public class Spieler extends Actor implements Treffbar
     }
 
     public void waffenWechsel(){
-        Doomsday p = new Doomsday();
-        aktuelleWaffe = p;
-        getWorld().addObject(p ,getX() ,getY() );
+        if(Greenfoot.isKeyDown("1") || Greenfoot.isKeyDown("2") || Greenfoot.isKeyDown("3") || Greenfoot.isKeyDown("4") || Greenfoot.isKeyDown("5") ){
+            if (aktuelleWaffe != null){
+                getWorld().removeObject(waffe);
+            }
+        }
+        if (Greenfoot.isKeyDown("1")){
+            waffe = hellebarde;
+            aktuelleWaffe = hellebarde;
+            getWorld().addObject(waffe,getX(),getY());
+        }
+        if (Greenfoot.isKeyDown("2")){
+            waffe = laserPhaser;
+            aktuelleWaffe = laserPhaser;
+            getWorld().addObject(waffe,getX(),getY());
+        }
+        if (Greenfoot.isKeyDown("3")){
+            waffe = doomsday;
+            aktuelleWaffe = doomsday;
+            getWorld().addObject(waffe,getX(),getY());
+        }
+        if (Greenfoot.isKeyDown("4")){
+            waffe = eric;
+            aktuelleWaffe = eric;
+            getWorld().addObject(waffe,getX(),getY());
+        }
+        if (Greenfoot.isKeyDown("5")){
+            waffe = staebchen;
+            aktuelleWaffe = staebchen;
+            getWorld().addObject(waffe,getX(),getY());
+        }
     }
 
     private void bewegen(){

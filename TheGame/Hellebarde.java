@@ -18,10 +18,11 @@ public class Hellebarde extends Actor implements Waffen
     }
     
     public void zielen(int winkel){
-        
+        setRotation(winkel);
     }
     
     public void tragen(int x , int y , int winkel){
-        
+        setLocation(x,y);
+        setRotation(winkel);
     }
 }
