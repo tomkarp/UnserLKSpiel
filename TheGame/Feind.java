@@ -1,4 +1,4 @@
-public interface Feind  
+public interface Feind extends Treffbar 
 {
     //100-1000 leben
     //public void damage(int schaden);
@@ -10,4 +10,5 @@ public interface Feind
 
     public void regHealth();
 
+    public void damage(int s);
 }

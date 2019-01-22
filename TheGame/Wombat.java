@@ -6,7 +6,7 @@ import java.util.concurrent.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Wombat extends Actor implements Feind, Treffbar
+public class Wombat extends Actor implements Feind
 {
     /**
      * Act - do whatever the Wombat wants to do. This method is called whenever

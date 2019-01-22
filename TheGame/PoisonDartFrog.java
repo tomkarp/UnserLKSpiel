@@ -6,7 +6,7 @@ import java.util.concurrent.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PoisonDartFrog extends Actor implements Feind, Treffbar
+public class PoisonDartFrog extends Actor implements Feind
 {
     int leben=300;
     int schaden=40;
