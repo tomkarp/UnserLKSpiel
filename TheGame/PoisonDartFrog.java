@@ -6,7 +6,7 @@ import java.util.concurrent.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PoisonDartFrog extends Actor implements Feind, Treffbar
+public class PoisonDartFrog extends Actor implements Feind
 {
     int leben=300;
     int schaden=40;
@@ -73,6 +73,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         }
         if(leben<=0){
             getWorld().removeObject(b);
+            getWorld().addObject(new Poison(),getX(),getY());
             getWorld().removeObject(this);
         }
     }

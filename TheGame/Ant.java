@@ -7,7 +7,7 @@ import greenfoot.*;
  * @version 0.2
  */
 import java.util.concurrent.*;
-public class Ant extends Actor implements Feind, Treffbar
+public class Ant extends Actor implements Feind
 {
     int leben=100;
     int ruestung=20;
