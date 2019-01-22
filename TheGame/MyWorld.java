@@ -33,7 +33,7 @@ public class MyWorld extends World
         zufall = Greenfoot.getRandomNumber(400);
         if(zufall == 0)
             addObject(new Ant(), randX(), randY());
-        zufall = Greenfoot.getRandomNumber(800);
+        zufall = Greenfoot.getRandomNumber(600);
         if(zufall == 0)
             addObject(new PoisonDartFrog(), randX(), randY());  
         zufall = Greenfoot.getRandomNumber(1000);

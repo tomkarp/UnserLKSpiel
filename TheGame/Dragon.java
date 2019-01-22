@@ -7,7 +7,7 @@ import java.util.concurrent.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Dragon extends Actor implements Feind, Treffbar
+public class Dragon extends Actor implements Feind
 {
 
     int leben=900;

@@ -7,7 +7,7 @@ import greenfoot.*;
  * @version 0.2
  */
 import java.util.concurrent.*;
-public class Ant extends Actor implements Feind, Treffbar
+public class Ant extends Actor implements Feind
 {
     int leben=100;
     int ruestung=20;
@@ -72,7 +72,7 @@ public class Ant extends Actor implements Feind, Treffbar
             leben=leben-schaden;
         else if(schaden<ruestung)
             ruestung=ruestung-schaden;
-        else if(schaden>ruestung){
+        else if(schaden>=ruestung){
             schaden=schaden-ruestung;
             ruestung=0;
             leben=leben-schaden;
