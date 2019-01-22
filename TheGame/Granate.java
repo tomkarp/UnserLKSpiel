@@ -4,6 +4,7 @@ public class Granate extends Actor implements Projektil
 {
     int zeit = 0;
     public Granate(int w){
+        setImage("steel-ball.png");
         setRotation(w - 90);
     }
 
