@@ -3,15 +3,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Spieler extends Actor implements Treffbar
 {
     int leben;
+    int ausdauer;
+    //Trigonometrie
     int i;
     int x;
     int y;
     double blickWinkel;
-
     double alpha;
     double beta;
     double a2 ;
     double b2; 
+
     Waffen aktuelleWaffe; 
 
     public Spieler(){
@@ -23,7 +25,7 @@ public class Spieler extends Actor implements Treffbar
 
     public void act() 
     {
-        checkLeben();
+        text();
         if (i> 0){
             waffenWechsel();
             i--;
@@ -38,8 +40,9 @@ public class Spieler extends Actor implements Treffbar
 
     } 
 
-    public void checkLeben(){
+    public void text(){
         getWorld().showText("Leben: "+leben,100,100);
+        getWorld().showText("Ausdauer: "+ausdauer,100, 150);
         if(leben<=0){
             getWorld().showText("GAME OVER",getWorld().getWidth()/2,getWorld().getHeight()/2);
             Greenfoot.stop();
@@ -118,20 +121,38 @@ public class Spieler extends Actor implements Treffbar
 
     private void bewegen(){
         if(Greenfoot.isKeyDown("w")){
-            setLocation(getX(), getY() - 3);
+            if (Greenfoot.isKeyDown("shift") && ausdauer != 0)
+                setLocation(getX(), getY() - 7);
+            else
+                setLocation(getX(), getY() - 3);
             setImage("CharakterH.png");
         }
         if(Greenfoot.isKeyDown("s")){
-            setLocation(getX(), getY() + 3);
+            if (Greenfoot.isKeyDown("shift") && ausdauer != 0)
+                setLocation(getX(), getY() + 7);
+            else
+                setLocation(getX(), getY() + 3);
             setImage("CharakterV.png");
         }
         if(Greenfoot.isKeyDown("a")){
-            setLocation(getX() - 3, getY());
+            if (Greenfoot.isKeyDown("shift") && ausdauer != 0)
+                setLocation(getX() - 7, getY());
+            else
+                setLocation(getX() - 3, getY());
             setImage("CharakterL.png");
         }
         if(Greenfoot.isKeyDown("d")){
-            setLocation(getX() + 3, getY());
+            if (Greenfoot.isKeyDown("shift") && ausdauer != 0)
+                setLocation(getX() + 7, getY());
+            else
+                setLocation(getX() + 3, getY());
             setImage("CharakterR.png");
         }
+        
+        if (ausdauer != 0 && Greenfoot.isKeyDown("shift"))
+            ausdauer--;
+      
+        else if(ausdauer != 100)
+            ausdauer++;
     }
 }

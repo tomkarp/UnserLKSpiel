@@ -1,11 +1,11 @@
 import greenfoot.*; 
 public class Laser extends Actor implements Projektil  
 {
-    
+
     int schaden;
-    public Laser(int schaden,int w)
+    public Laser(int w)
     {
-       schaden=70;
+        schaden=70;
         setRotation(w - 90);
         setImage("LaserBlau.png");
         getImage().scale(30,10);
@@ -21,13 +21,13 @@ public class Laser extends Actor implements Projektil
         } 
 
     }
+
     public void checkGegner(){
         if(isTouching(Treffbar.class)){
             Treffbar t=(Treffbar)getOneIntersectingObject(Treffbar.class);
             t.damage(schaden);
         }
     }
-    
 
     public void remove(){
         getWorld().removeObject(this);

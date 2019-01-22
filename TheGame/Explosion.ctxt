@@ -7,9 +7,5 @@ comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ remove()
 comment4.params=
-<<<<<<< HEAD
-comment4.target=void\ schaden()
-=======
 comment4.target=void\ checkGegner()
->>>>>>> 9c2badcaeba310500577e03702a8b1886a008061
 numComments=5

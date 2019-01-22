@@ -10,6 +10,8 @@ public class Doomsday extends Actor implements Waffen
     }
 
     public void act(){
+        if(cooldown != 0)
+        cooldown--;
     }
 
     public void attacke(int w){
@@ -17,8 +19,6 @@ public class Doomsday extends Actor implements Waffen
             getWorld().addObject(new Granate(w), getX(), getY());
             cooldown = 100;
         }
-        else 
-            cooldown--;
     }
 
     public void zielen(int w){
