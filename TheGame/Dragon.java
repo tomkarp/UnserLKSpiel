@@ -15,6 +15,8 @@ public class Dragon extends Actor implements Feind, Treffbar
     boolean added;
     int ruestung=800;
     int schussSchaden=900;
+    int maxleben;
+    int act;
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
     HealthBar b =new HealthBar();
     /**
@@ -25,16 +27,15 @@ public class Dragon extends Actor implements Feind, Treffbar
         setImage("dragonWithArmor.png");
         getImage().scale(100,100);
         b.setMax(ruestung);
-     
+        maxleben=leben;
     }
 
     public void act() 
     {
-         healthBar();
-         if(!added){
-             getWorld().addObject(b,getX(),getY());
-              t.scheduleAtFixedRate(()->leben++,300,300,TimeUnit.MILLISECONDS);
-             added=true;
+        healthBar();
+        if(!added){
+            getWorld().addObject(b,getX(),getY());
+            added=true;
         }
         if(ruestung<=0){
             setImage("dragon.png");
@@ -43,8 +44,15 @@ public class Dragon extends Actor implements Feind, Treffbar
         }
         move();
         attack();
-       
-    }    
+        act++;
+        regHealth();
+    }   
+
+    public void regHealth(){
+        if(leben<maxleben&&act%30==0){
+            leben++;
+        }
+    }
 
     public void move(){
         move(1);
@@ -56,14 +64,13 @@ public class Dragon extends Actor implements Feind, Treffbar
         }
     }
 
-    public void damage(int schaden){
+    public void damage(int s){
         if(ruestung<=0)
-            leben=leben-schaden;
+            leben=leben-s;
         else
-            ruestung=ruestung-schaden;
+            ruestung=ruestung-s;
         if(leben<=0){
             getWorld().removeObject(this);
-            getWorld().addObject(new Poison(),getX(),getY());
         }
     }
 
@@ -77,16 +84,15 @@ public class Dragon extends Actor implements Feind, Treffbar
         }
     }
 
-    
-
 
     public void healthBar(){
         b.setLocation(getX(),getY()+20);
-        if(ruestung>0){
+        if(ruestung>=0){
+            System.out.println(ruestung+"vorher");
             b.scaleB(ruestung,getRotation());
 
         }
-        else if(ruestung==0){
+        else if(ruestung<=0){
             b.switchToHealth();
             b.scaleB(leben,getRotation());
         }

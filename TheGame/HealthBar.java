@@ -19,7 +19,9 @@ public class HealthBar extends Actor
     }
 
     public void scaleB(int current,int rotation){
+        System.out.println(current+"vorher2");
         int length=((current/max)*100)/4;
+        System.out.println(length);
         getImage().scale(length,7);
         setRotation(rotation);
     }

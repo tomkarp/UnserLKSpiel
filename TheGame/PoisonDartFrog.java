@@ -11,6 +11,8 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
     int leben=300;
     int schaden=40;
     boolean added;
+    int maxleben;
+    int act;
     int ruestung=100;
     HealthBar b =new HealthBar();
     ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
@@ -22,7 +24,7 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         setImage("frogWithArmor.png");
         getImage().scale(40,38);
         b.setMax(ruestung);
-
+        maxleben=leben;
     }
 
     public void act() 
@@ -30,7 +32,6 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         healthBar();
         if(!added){
             getWorld().addObject(b,getX(),getY());
-             t.scheduleAtFixedRate(()->leben++,700,700,TimeUnit.MILLISECONDS);
             added=true;
         }
         if(ruestung<=0){
@@ -40,8 +41,15 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         }
         move();
         attack();
-      
+        regHealth();
+        act++;
     }    
+
+    public void regHealth(){
+        if(leben<maxleben&&act%50==0){
+            leben++;
+        }
+    }
 
     public void move(){
         move(2);
@@ -71,15 +79,12 @@ public class PoisonDartFrog extends Actor implements Feind, Treffbar
         }
     }
 
-   
-
     public void healthBar(){
-
         b.setLocation(getX(),getY()+20);
         if(ruestung>0){
             b.scaleB(ruestung,getRotation());
         }
-        else if(ruestung==0){
+        else if(ruestung<=0){
             b.switchToHealth();
             b.scaleB(leben,getRotation());
         }

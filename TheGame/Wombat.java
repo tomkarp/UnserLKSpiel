@@ -16,26 +16,26 @@ public class Wombat extends Actor implements Feind, Treffbar
     int ruestung=300;
     int schaden=50;
     int leben=600;
+    int maxleben;
     boolean added;
     HealthBar b = new HealthBar();
     static int wombatdeathcounter = 1;
-
-    ScheduledThreadPoolExecutor t=new ScheduledThreadPoolExecutor(1);
+    int act;
     public Wombat(){
         setImage("wombatWithArmor.png");
         b.setMax(ruestung);
-       
+        maxleben=leben;
     }
-  
-      
+
   
     public void act() 
     {
+        regHealth();
         healthBar();
         if(!added){
-             getWorld().addObject(b,getX(),getY());
-              t.scheduleAtFixedRate(()->leben++,500,500,TimeUnit.MILLISECONDS);
-             added=true;
+            getWorld().addObject(b,getX(),getY());
+
+            added=true;
         }
         if(ruestung<=0){
             setImage("wombat.png");
@@ -43,8 +43,14 @@ public class Wombat extends Actor implements Feind, Treffbar
         }
         move();
         attack();
-        
+        act++;
     }    
+
+    public void regHealth(){
+        if(leben<maxleben&&act%50==0){
+            leben++;
+        }
+    }
 
     public void move(){
         move(2);
@@ -83,13 +89,12 @@ public class Wombat extends Actor implements Feind, Treffbar
     }
 
 
-
     public void healthBar(){
         b.setLocation(getX(),getY()+20);
         if(ruestung>0){
             b.scaleB(ruestung,getRotation());
         }
-       if(ruestung==0){
+        if(ruestung<=0){
             b.switchToHealth();
             b.scaleB(leben,getRotation());
         }
