@@ -14,7 +14,7 @@ public class Wombat extends Actor implements Feind, Treffbar
      */
 
     int ruestung=300;
-    int schaden=600;
+    int schaden=50;
     int leben=600;
     boolean added;
     HealthBar b = new HealthBar();

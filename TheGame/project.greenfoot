@@ -1,6 +1,12 @@
 #Greenfoot properties
+<<<<<<< HEAD
 #Tue Jan 22 14:38:33 CET 2019
 target16.name=Laserphaser
+=======
+#Tue Jan 22 14:29:05 CET 2019
+target16.name=Laserphaser
+class.Spieler.image=baby1.png
+>>>>>>> cad0b6fc2f86fe33b2dec7eff2c56d834e5ec952
 target2.name=Treffbar
 target9.name=Waffen
 dependency11.type=UsesDependency
@@ -70,8 +76,13 @@ target3.y=0
 target3.x=0
 >>>>>>>=f4131e804cc95f733968a13ebb6b65aba0b50122
 target7.typeParameters=
+<<<<<<< HEAD
 dependency26.to=Spieler
 target8.height=50
+=======
+target8.height=50
+dependency26.to=Spieler
+>>>>>>> cad0b6fc2f86fe33b2dec7eff2c56d834e5ec952
 mainWindow.y=32
 class.Laser.superclass=greenfoot.Actor
 mainWindow.x=-8
@@ -101,9 +112,15 @@ dependency23.type=UsesDependency
 dependency20.from=PoisonDartFrog
 target19.type=ClassTarget
 target4.width=80
+<<<<<<< HEAD
 dependency27.from=MyWorld
 target18.showInterface=false
 target9.showInterface=false
+=======
+target9.showInterface=false
+dependency27.from=MyWorld
+target18.showInterface=false
+>>>>>>> cad0b6fc2f86fe33b2dec7eff2c56d834e5ec952
 target10.showInterface=false
 target1.showInterface=false
 target5.type=ClassTarget
@@ -123,8 +140,13 @@ target11.x=0
 readme.height=58
 class.Waffen.superclass=
 class.Doomsday.superclass=greenfoot.Actor
+<<<<<<< HEAD
 target17.showInterface=false
 target8.showInterface=false
+=======
+target8.showInterface=false
+target17.showInterface=false
+>>>>>>> cad0b6fc2f86fe33b2dec7eff2c56d834e5ec952
 dependency27.to=Trank
 class.Snickers.superclass=greenfoot.Actor
 dependency3.from=Wombat
@@ -148,8 +170,13 @@ dependency12.from=Doomsday
 target14.width=80
 dependency17.to=Laser
 class.MyWorld.superclass=greenfoot.World
+<<<<<<< HEAD
 dependency19.from=PoisonDartFrog
 target6.y=0
+=======
+target6.y=0
+dependency19.from=PoisonDartFrog
+>>>>>>> cad0b6fc2f86fe33b2dec7eff2c56d834e5ec952
 target6.x=0
 class.Explosion.superclass=greenfoot.Actor
 target10.width=80
@@ -159,9 +186,15 @@ target2.x=0
 dependency22.type=UsesDependency
 target18.type=InterfaceTarget
 target17.height=50
+<<<<<<< HEAD
 dependency29.type=UsesDependency
 dependency26.from=MyWorld
 target6.typeParameters=
+=======
+target6.typeParameters=
+dependency29.type=UsesDependency
+dependency26.from=MyWorld
+>>>>>>> cad0b6fc2f86fe33b2dec7eff2c56d834e5ec952
 target4.type=ClassTarget
 class.Ant.image=ant3.png
 class.Fries.image=snickers.png
@@ -258,8 +291,13 @@ target20.y=0
 target20.x=0
 dependency34.type=UsesDependency
 dependency31.from=MyWorld
+<<<<<<< HEAD
 target15.showInterface=false
 target6.showInterface=false
+=======
+target6.showInterface=false
+target15.showInterface=false
+>>>>>>> cad0b6fc2f86fe33b2dec7eff2c56d834e5ec952
 readme.y=10
 readme.x=10
 target16.typeParameters=
@@ -272,8 +310,13 @@ readme.width=47
 target20.width=80
 mainWindow.height=1056
 height=545
+<<<<<<< HEAD
 target14.showInterface=false
 target5.showInterface=false
+=======
+target5.showInterface=false
+target14.showInterface=false
+>>>>>>> cad0b6fc2f86fe33b2dec7eff2c56d834e5ec952
 dependency34.to=Dragon
 target18.height=50
 target2.width=80
@@ -282,6 +325,7 @@ target17.y=0
 target17.x=0
 target17.name=Poison
 target3.name=Wombat
+<<<<<<< HEAD
 publish.locked=true
 target13.y=0
 target7.height=50
@@ -304,12 +348,38 @@ dependency1.to=Poison
 class.HealthBar.superclass=greenfoot.Actor
 dependency30.from=MyWorld
 dependency33.type=UsesDependency
+=======
+class.Trank.image=SlurpJuice.png
+publish.locked=true
+target7.height=50
+target13.y=0
+target13.x=0
+dependency7.to=Spieler
+dependency12.type=UsesDependency
+dependency19.type=UsesDependency
+dependency16.from=Laserphaser
+target13.showInterface=false
+target4.showInterface=false
+target15.type=ClassTarget
+dependency23.from=Spieler
+dependency26.type=UsesDependency
+target11.height=50
+dependency24.to=Wombat
+target1.type=ClassTarget
+target9.width=80
+target8.type=ClassTarget
+class.HealthBar.superclass=greenfoot.Actor
+dependency1.to=Poison
+dependency33.type=UsesDependency
+dependency30.from=MyWorld
+>>>>>>> cad0b6fc2f86fe33b2dec7eff2c56d834e5ec952
 class.Fries.superclass=greenfoot.Actor
 target5.width=80
 target8.y=0
 target8.x=0
 target12.width=80
 dependency2.type=UsesDependency
+<<<<<<< HEAD
 target4.y=0
 class.Wombat.image=wombat.png
 target4.x=0
@@ -321,10 +391,28 @@ target21.typeParameters=
 world.lastInstantiated=MyWorld
 class.Laserphaser.superclass=greenfoot.Actor
 dependency14.to=Explosion
+=======
+class.Wombat.image=wombat.png
+target4.y=0
+target4.x=0
+target20.height=50
+dependency9.type=UsesDependency
+dependency6.from=Dragon
+target12.height=50
+target21.typeParameters=
+world.lastInstantiated=MyWorld
+dependency14.to=Explosion
+class.Laserphaser.superclass=greenfoot.Actor
+>>>>>>> cad0b6fc2f86fe33b2dec7eff2c56d834e5ec952
 class.Projektil.superclass=
 target18.typeParameters=
 target19.showInterface=false
 target1.height=50
+<<<<<<< HEAD
 target4.typeParameters=
 mainWindow.width=1936
+=======
+mainWindow.width=1936
+target4.typeParameters=
+>>>>>>> cad0b6fc2f86fe33b2dec7eff2c56d834e5ec952
 =\=\=\=\=\=\=
