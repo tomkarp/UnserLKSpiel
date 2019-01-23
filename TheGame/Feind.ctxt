@@ -8,4 +8,6 @@ comment3.params=
 comment3.target=void\ healthBar()
 comment4.params=
 comment4.target=void\ regHealth()
-numComments=5
+comment5.params=s
+comment5.target=void\ damage(int)
+numComments=6
