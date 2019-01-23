@@ -21,9 +21,7 @@ public class Doomsday extends Actor implements Waffen
         }
     }
 
-    public void zielen(int w){
-        setRotation(w);
-    }
+ 
 
     public void tragen(int x, int y, int winkel){
         setLocation(x,y);
